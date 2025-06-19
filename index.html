@@ -1,109 +1,1588 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Drag and Drop JS vs jQuery</title>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  <style>
-    body {
-      font-family: Arial, sans-serif;
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="css/style.css" />
+<style>
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: #1a191d;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+        background: #0b141d;
+
+  }
+  .box {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 100px;
+    position: relative;
+  }
+  nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(26, 25, 29, 0.9);
+    z-index: 1000;
+    padding: 20px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .nav_text {
+    font-size: 32px;
+    margin-left: 10%;
+  }
+  .nav_links {
+    margin-right: 10%;
+    display: flex;
+    align-items: center;
+  }
+  .nav_links a {
+    display: inline-flex;
+    align-items: center;
+    margin: 0 20px;
+    text-decoration: none;
+    font-size: 20px;
+    transition: color 0.3s ease;
+  }
+  a:link,
+  a:visited {
+    color: white;
+  }
+  .nav_links:hover a {
+    color: #ccc;
+  }
+  .nav_links a:hover {
+    color: white;
+  }
+  .nav_slash {
+    font-weight: bold;
+    margin-right: 4px;
+    display: inline-block;
+    line-height: 1;
+  }
+  .nav_text_link {
+    display: inline-block;
+    line-height: 1;
+  }
+  header {
+    text-align: center;
+    padding: 50px 0;
+
+  }
+  .header_text {
+    font-size: 84px;
+    margin: 0;
+  }
+  .header_pre_text {
+    font-size: 24px;
+    margin: 0;
+  }
+  main {
+    padding: 50px 0;
+    position: relative;
+  }
+  .main_text {
+    text-align: center;
+    font-size: 42px;
+    margin-bottom: 30px;
+  }
+  .skills_blocks {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+  .skills_block.soft {
+    width: 48%;
+    text-align: left;
+    background-color: #2a2a2f;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .skills_block.soft:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+  }
+  .skills_block.soft ul {
+    padding-left: 20px;
+  }
+  .skills_block.soft ul li {
+    font-size: 18px;
+    margin-bottom: 10px;
+    position: relative;
+    padding-left: 30px;
+  }
+  .skills_block.soft ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #00bfff;
+    font-weight: bold;
+  }
+  .soft_skills_header h1 {
+    font-size: 28px;
+    color: #00bfff;
+  }
+  .skills_block:not(.soft) {
+    width: 48%;
+  }
+
+  .img_icon {
+    width: 64px;
+    height: auto;
+  }
+  .soft_skills_header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 10px;
+  }
+  .soft_skills_icon {
+    width: 60px;
+    height: auto;
+  }
+  .main_img {
+    display: block;
+    max-width: 50%;
+    width: 100%;
+    height: auto;
+    min-height: 400px;
+    object-fit: contain;
+    margin: -30px auto 30px auto;
+    opacity: 0.5;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+  }
+  .about_me,
+  .robots,
+  .contacts {
+    padding: 50px 0;
+    border-top: 1px solid #444;
+  }
+  .about_me h1,
+  .robots h1,
+  .contacts h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+  }
+  .about_me p,
+  .robots p,
+  .contacts p {
+    font-size: 20px;
+    line-height: 1.6;
+    margin: 0 auto;
+    max-width: 800px;
+  }
+  footer {
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #444;
+  }
+  .animate {
+    opacity: 0;
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+  }
+  .slide-left,
+  .slide-right {
+    transform: translateX(0) !important;
+    opacity: 1 !important;
+  }
+
+  @media (max-width: 768px) {
+    .box {
+      width: 90%;
+      padding-top: 120px;
     }
-    .container {
+    nav {
+      padding: 10px 0;
       display: flex;
-      justify-content: space-around;
-      margin-top: 50px;
+      justify-content: center;
+      align-items: center;
     }
-    .block {
-      width: 200px;
-      height: 300px;
-      border: 2px solid #333;
-      padding: 10px;
-      background-color: #f9f9f9;
-      overflow: auto;
+    .nav_text,
+    .nav_links {
+      margin: 0;
+    }
+    .nav_links a {
+      margin: 0 10px;
+      font-size: 18px;
+    }
+    .skills_blocks {
+      flex-direction: column;
+      gap: 20px;
+    }
+    .skills_block,
+    .skills_block.soft {
+      width: 100%;
+      margin-bottom: 20px;
+      padding: 15px;
+    }
+    .main_img {
+      max-width: 100%;
+      margin: -30px auto 30px auto;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .header_text {
+      font-size: 48px;
+    }
+    .header_pre_text {
+      font-size: 18px;
+    }
+    .main_text {
+      font-size: 28px;
+    }
+    .nav_text {
+      font-size: 24px;
+    }
+    .nav_links a {
+      font-size: 16px;
+    }
+  }
+  .skills_block:not(.soft) {
+  width: 48%;
+  background-color: #25252b;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skills_block:not(.soft):hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+.skills_block:not(.soft) ul {
+  list-style: none;
+  padding-left: 0;
+}
+.skills_block:not(.soft) ul li {
+  font-size: 18px;
+  margin-bottom: 15px;
+  position: relative;
+  padding-left: 24px;
+}
+.skills_block:not(.soft) ul li::before {
+  content: "»";
+  position: absolute;
+  left: 0;
+  color: #ff8c00;
+  font-weight: bold;
+}
+.skills_text1 {
+  font-size: 28px;
+  color: #ff8c00;
+  text-align: center;
+}
+.skills_text2 {
+  font-size: 20px;
+  margin-top: 10px;
+    text-align: center;
+}
+/* Общие стили карточек навыков */
+.skills_block {
+  width: 48%;
+  background-color: #2a2a2f;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.skills_block:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.5);
+}
+.skills_block ul {
+  list-style: none;
+  padding-left: 0;
+}
+.skills_block ul li {
+  font-size: 18px;
+  margin-bottom: 12px;
+  position: relative;
+  padding-left: 28px;
+}
+
+/* Soft Skills — синие галочки */
+.skills_block.soft ul li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #00bfff;
+  font-weight: bold;
+}
+
+/* Hard Skills — оранжевые стрелки */
+.skills_block.hard ul li::before {
+  content: "»";
+  position: absolute;
+  left: 0;
+  color: #ff8c00;
+  font-weight: bold;
+}
+
+/* Заголовки */
+.skills_block h1.skills_text {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+.skills_block.soft h1.skills_text {
+  color: #00bfff;
+}
+.skills_block.hard h1.skills_text {
+  color: #ff8c00;
+  text-decoration: underline red;
+  text-decoration-thickness: 6px;
+}
+
+.skills_block h1.skills_text2 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  color: #ccc;
+}
+
+/* Иконка и заголовок */
+.skills_header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+.skills_icon {
+  width: 60px;
+  height: auto;
+}
+.skills_blocks {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* Добавлено */
+  gap: 20px; /* Можно добавить отступ между карточками */
+}
+.skills_block {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.main_email{
+  font-size: 48px;
+}
+.main_email {
+  position: relative;
+  display: inline-block;
+  font-size: 20px;
+  color: white;
+  cursor: pointer;
+  padding: 5px 0;
+  transition: color 0.3s ease;
+}
+
+.main_email::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: violet;
+  transition: height 0.3s ease, background-color 0.3s ease;
+  z-index: -1;
+}
+
+.main_email:hover::after {
+  height: 100%;
+  background: violet;
+  border-radius: 4px;
+}
+
+.main_email:hover {
+  color: white;
+}
+.site-footer {
+  background-color: #0d0d0d;
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid #333;
+  padding-bottom: 30px;
+}
+
+.footer-contact h3,
+.footer-social h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.footer-contact p {
+  margin: 5px 0;
+  color: #ccc;
+}
+
+.footer-social .social-icons a {
+  font-size: 24px;
+  color: #ccc;
+  margin-right: 15px;
+  transition: color 0.3s ease;
+}
+
+.footer-social .social-icons a:hover {
+  color: #1da1f2;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  color: #777;
+  font-size: 14px;
+}
+/* Центровка заголовков */
+.skills_header {
+  justify-content: center;
+  text-align: center;
+}
+.skills_text,
+.skills_text2 {
+  text-align: center;
+  margin-bottom:70px;
+}
+
+/* Красивые анимации появления */
+.animate {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.animate.visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.fone_header{
+  position: absolute;
+  left: 30%;
+  top: 100px;
+  width: 50%;
+  z-index: -5;
+}
+.sun_header{
+ position: absolute;
+  right: 26%;
+  top: 100px;
+  width: 300px;
+  animation: sun 5s linear infinite alternate;
+}
+@keyframes sun {
+  100%{
+    transform: translateX(20px);
+  }
+}
+.skills_blocks {
+  display: flex;
+  gap: 20px; /* Добавляет немного пространства между блоками */
+  align-items: flex-start; /* Выравнивает заголовки по верхнему краю */
+}
+
+.skills_block {
+  flex: 1; /* Дает каждому блоку равную ширину */
+}    .project-card {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      background-image: url('https://via.placeholder.com/300x400'); /* замени на свой фон */
+      background-size: cover;
+      background-position: center;
+      border-radius: 20px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+    }
+    /* Секция “Про меня” */
+.about_me {
+  display: flex;
+  align-items: center;        /* выравнивание по вертикали */
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 40px;
+  background-color: transparent;
+  color: #fff;
+  overflow: hidden;           /* обрезаем вылезшую за границы часть */
+}
+
+/* Текстовый блок */
+.about_me_text {
+  flex: 0 0 40%;              /* немного больше места для текста */
+  max-width: 500px;
+}
+
+/* Блок с картинкой */
+.about_me_img {
+  flex: 0 0 60%;              /* картинка занимает 60% ширины */
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;           /* чтобы картинка не растягивалась за пределы блока */
+}
+
+/* Само изображение */
+.about_me_img img {
+  width: auto;                /* сохраняем пропорции */
+  height: 100%;               /* растягиваем по высоте блока */
+  max-height: 400px;          /* ограничиваем максимальную высоту */
+  transform: translateX(10%); /* сдвигаем немного вправо */
+  border-radius: 12px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.6);
+  transition: transform 0.4s ease;
+}
+
+/* Ховер на картинку */
+.about_me_img img:hover {
+  transform: translateX(10%) scale(1.03);
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .about_me {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about_me_text,
+  .about_me_img {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+  .about_me_img {
+    margin-top: 1rem;
+    justify-content: center;
+  }
+  .about_me_img img {
+    height: auto;
+    width: 80%;
+    transform: translateX(0);
+  }
+}
+
+
+    .project-card:hover {
+      transform: scale(1.03);
+    }
+
+    .overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .project-card:hover .overlay {
+      opacity: 1;
+    }
+
+    .overlay-text {
+      color: #fff;
+      font-size: 1.5rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.4s ease;
+    }
+
+    .project-card:hover .overlay-text {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+.skills_header {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Центрирует содержимое */
+}
+
+.skills_text2 {
+  text-align: center;
+  margin-top: 0; /* Убирает лишний отступ сверху */
+}
+.skills_blocks {
+  display: flex;
+  gap: 20px; /* Добавляет пространство между блоками */
+  align-items: stretch; /* Растягивает блоки до одинаковой высоты */
+}
+
+.skills_block {
+  flex: 1; /* Дает каждому блоку равную ширину */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Размещает содержимое равномерно */
+}
+.skills_text2 {
+  text-align: center;
+  margin-top: auto; /* Автоматически выравнивает текст внизу */
+}
+.skills_block {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Выравниваем содержимое вверх */
+  height: 100%; /* Делаем блоки одинаковой высоты */
+}
+
+.skills_text2 {
+  margin-top: 0; /* Убираем лишние отступы */
+  padding-top: 10px; /* Немного поднимаем текст */
+}
+.skills_blocks {
+  min-height: 400px; /* Уменьшаем минимальную высоту контейнера */
+}
+
+.skills_block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Содержимое распределяется равномерно */
+}
+
+.skills_text2 {
+  margin-top: 5px; /* Немного поднимаем заголовки */
+}
+.skills_blocks {
+  display: flex;
+  gap: 20px; /* Расстояние между блоками */
+  align-items: stretch; /* Растягиваем блоки одинаково */
+}
+.projects-container {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 40px;
+}
+
+.project-link {
+  text-decoration: none;
+}
+
+.project-card {
+  position: relative;
+  width: 300px;
+  height: 380px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 30px rgba(0,0,0,0.6);
+}
+
+.image-metro {
+  background-image: url('img/photo_2025-06-11_10-57-41.jpg');
+}
+.image-bolda {
+  background-image: url('img/photo_2025-06-11_10-57-36.jpg');
+}
+.image-traveloo {
+  background-image: url('img/photo_2025-06-11_10-57-33.jpg');
+}
+.image-saveukraine{
+  background-image: url('img/photo_2025-06-11_11-09-29.jpg');
+}
+.overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.project-card:hover .overlay {
+  opacity: 1;
+}
+
+.overlay-text {
+  color: #fff;
+  font-size: 22px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.project-info {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(0,0,0,0.85);
+  color: #fff;
+  padding: 16px;
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.project-card:hover .project-info {
+  opacity: 0;
+}
+
+.project-title {
+  font-weight: bold;
+  font-size: 20px;
+  margin-bottom: 4px;
+}
+
+.project-category {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.skills_block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 600px; /* Фиксированная высота блока */
+  justify-content: space-between; /* Равномерное распределение содержимого */
+}
+.skills_text2 {
+  margin-top: 0; /* Убираем лишний отступ */
+  padding-top: 10px; /* Немного поднимаем заголовок */
+}
+
+.skills_block ul {
+  margin-top: -60px; /* Поднимает список вверх */
+}
+
+.hard_skills_ul{
+   padding-bottom: 110px;
+}
+.robots{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+.works{
+  width: 100%;
+}
+.skill_text2:hover::after {
+  height: 100%;
+  background: blue;
+  border-radius: 4px;
+}
+.skill_text2:hover {
+  height: 100%;
+  color: cyan;
+  border-radius: 4px;
+}
+.about_me{
+  width: 100%;
+}
+.about_me h1{
+  text-align: center;
+}
+    a.project-link {
+      text-decoration: none;
+      color: inherit;
+    }
+.works{
+  text-align: center;
+}
+    .project-card {
+      width: 300px;
+      background-color: #1a1a1a;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+      cursor: pointer;
+      transition: transform 0.4s ease;
+    }
+    /* базовые стили футера */
+.site-footer {
+  background-color: #0d0d0d;
+  color: #fff;
+  padding: 40px 20px 20px;
+  font-family: 'Segoe UI', sans-serif;
+}
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+  border-bottom: 1px solid #333;
+  padding-bottom: 30px;
+}
+.footer-contact,
+.footer-social {
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+}
+/* индивидуальные задержки через CSS-переменную */
+.footer-contact { animation-delay: var(--delay); }
+.footer-social  { animation-delay: var(--delay); }
+
+.footer-contact h3,
+.footer-social h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  position: relative;
+}
+/* небольшая линия под заголовком */
+.footer-contact h3::after,
+.footer-social h3::after {
+  content: '';
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: #1da1f2;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+.footer-contact h3:hover::after,
+.footer-social h3:hover::after {
+  transform: scaleX(1);
+}
+
+.footer-contact p {
+  margin: 5px 0;
+  color: #ccc;
+}
+
+.footer-social .social-icons {
+  display: flex;
+  gap: 15px;
+}
+.footer-social .social-icons a {
+  font-size: 24px;
+  color: #ccc;
+  display: inline-block;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+/* при наведении — цвет + лёгкий «прыжок» */
+.footer-social .social-icons a:hover {
+  color: #1da1f2;
+  transform: translateY(-4px) scale(1.1);
+}
+
+/* нижняя часть футера */
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
+  color: #777;
+  font-size: 14px;
+  opacity: 0;
+  animation: fadeInUp 0.8s ease forwards;
+  animation-delay: 1s;
+}
+
+/* ключевые кадры для «выезда» снизу */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  } to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+    .project-card:hover {
+      transform: scale(1.02);
+    }
+
+    .project-image {
+      width: 100%;
+      height: 200px;
+      background-image: url('img/photo_2025-06-11_09-29-53.jpg'); /* Заменить на свой путь */
+      background-size: cover;
+      background-position: center;
+
       position: relative;
     }
-    .draggable {
-      margin: 5px;
-      padding: 10px;
-      background-color: #b0c4de;
-      cursor: grab;
-      display: inline-block;
-    }
-    .droppable {
-      background-color: #f1f1f1;
-    }
-    .highlight {
-      border: 2px dashed #00bfff;
-    }
-    .ui-draggable-dragging{
-        color:red;
-    }
-  </style>
-</head>
-<body>
+        .project-image1 {
+      width: 100%;
+      height: 200px;
+      background-image: url('img/photo_2025-06-11_10-19-27.jpg'); /* Заменить на свой путь */
+      background-size: cover;
+      background-position: center;
 
-<div class="container">
-  <div class="block droppable" id="jsMethodsBlock">
-    <h3>JS Methods</h3>
+      position: relative;
+    }
+    .project-card {
+  position: relative;
+  width: 600px; /* было 300px */
+  height: 420px; /* можно немного увеличить высоту */
+  border-radius: 16px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+    .project-card image-metro {
+  position: relative;
+  width: 800px; /* было 300px */
+  height: 420px; /* можно немного увеличить высоту */
+  border-radius: 16px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.projects-container {
+  display: flex;
+  gap: 2.5rem; /* немного больше, было 2rem */
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 40px;
+}
+
+            .project-image2 {
+      width: 100%;
+      height: 200px;
+      background-image: url('img/photo_2025-06-11_10-49-46.jpg'); /* Заменить на свой путь */
+      background-size: cover;
+      background-position: center;
+
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      z-index: 2;
+    }
+
+    .overlay-text {
+      color: #fff;
+      font-size: 1.4rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s ease;
+    }
+
+    .project-card:hover .overlay {
+      opacity: 1;
+    }
+
+    .project-card:hover .overlay-text {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .project-info {
+      padding: 16px;
+      background-color: #1a1a1a;
+      transition: opacity 0.3s ease;
+      z-index: 1;
+    }
+
+    .project-card:hover .project-info {
+      opacity: 0;
+    }
+
+    .project-title {
+      font-size: 28px;
+      font-weight: bold;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .project-category {
+      font-size: 14px;
+      color: #aaa;
+    }
+/* Контейнер секции */
+/* Контейнер секции */
+/* Подключи в <head> шрифт из Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&family=Open+Sans:wght@300;400&display=swap');
+
+/* Текстовый контейнер */
+.about_me_text {
+  flex: 0 0 60%;
+  max-width: 600px;
+  font-family: 'Open Sans', sans-serif;
+  color: #e0e0e0;
+}
+
+/* Заголовок */
+.about_me_text h1 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Параграф */
+.about_me_text p {
+  font-weight: 300;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  text-align: justify;
+  text-indent: 1.2em;
+}
+
+/* Список навыков */
+.about_me_text ul {
+  list-style: none;
+  margin: 1rem 0 1.5rem;
+  padding: 0;
+}
+.about_me_text li {
+  position: relative;
+  padding-left: 1.8em;
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+  font-weight: 400;
+}
+.about_me_text li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: #e52e71;
+  font-weight: 600;
+}
+
+/* Ссылки внутри текста (если будут) */
+.about_me_text a {
+  color: #ff8a00;
+  text-decoration: none;
+  border-bottom: 1px dotted #ff8a00;
+  transition: color 0.3s, border-color 0.3s;
+}
+.about_me_text a:hover {
+  color: #e52e71;
+  border-color: #e52e71;
+}
+/* Текстовый блок сузим, чтобы освободить место для картинки */
+.about_me_text {
+  flex: 0 0 35%;      /* было 60%, стало 35% */
+  max-width: 500px;
+}
+
+/* Картинка займёт значительно больше пространства */
+.about_me_img {
+  width: 50%;      /* было 40%, стало 65% */
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Сделаем картинку крупнее и немного «выезжающей» вправо */
+
+.about_me_img img:hover {
+  transform: translateX(15%) scale(1.05);
+}
+
+/* Секция “Про меня” */
+.about_me {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 40px;
+  background-color: transparent;
+  color: #fff;
+}
+
+/* Текстовый блок */
+.about_me_text {
+  flex: 0 0 40%;
+  max-width: 500px;
+}
+
+/* Блок с картинкой */
+.about_me_img {
+  flex: 0 0 60%;
+  height: 800px;
+  display: flex;
+  justify-content: flex-end;
+  overflow: hidden;
+  /* фиксируем высоту, чтобы растягивать по ширине */
+  max-height: 400px;
+}
+
+/* Картинка сохраняет пропорции */
+.about_me_img img {
+  width: 100%;      /* тянем по ширине контейнера */
+  height: auto;     /* высота — автоматическая, пропорциональная */
+  object-fit: cover;/* можно cover, чтобы при обрезке не было пустот */
+  border-radius: 12px;
+  box-shadow: 0 15px 25px rgba(0,0,0,0.6);
+  transition: transform 0.4s ease;
+  /* если хочешь чуть выехать вправо: */
+  margin-right: -5%; 
+}
+
+.about_me_img img:hover {
+  transform: scale(1.03);
+  margin-right: -5%;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .about_me {
+    flex-direction: column;
+    align-items: center;
+  }
+  .about_me_text,
+  .about_me_img {
+    flex: 1 0 100%;
+    max-width: 100%;
+  }
+  .about_me_img {
+    margin-top: 1rem;
+    justify-content: center;
+    max-height: none;
+  }
+  .about_me_img img {
+    width: 80%;
+    margin-right: 0;
+  }
+}
+img {
+  width: 100%;
+  height: auto;
+  object-fit: cover; /* если контейнер фиксирован */
+}
+@media (max-width: 480px) {
+  /* Навигация */
+  nav {
+    width: 500px;
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap:wrap;
+    padding: 10px 0;
+  }
+
+  .nav_links {
+     display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+header{
+  height:50px;
+}
+  .nav_text {
+    font-size: 1.5rem;
+  }
+
+  .nav_text_link {
+    font-size: 1rem;
+  }
+
+  /* Заголовок */
+  header .header_text {
+    font-size: 90px;
+    text-align: center;
+  }
+
+  .header_pre_text {
+    font-size: 1.2rem;
+    text-align: center;
+  }
+
+  /* Изображения в шапке */
+  .fone_header,
+  .sun_header {
+    width: 100%;
+    height:800px;
+    height: auto;
+    object-fit: cover;
+  }
+nav{
+  display: none;
+}
+  /* Блоки навыков */
+  .skills_blocks {
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+   
+  }
+
+  .skills_block {
+    width: 80%;
+    height: 10px;
+    box-sizing: border-box;
+  }
+    .skills_block2 {
+    width: 100%;
+
+    box-sizing: border-box;
+  }
+
+  .skills_header {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center
+  }
+
+
+.skills_block:not(.soft) {
+  width: 100%;
+
+  background-color: #25252b;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.about_me{
+  width:90%;
+}
+.about_me_img{
+  width:100%;
+}
+.about_me p{
+  text-align: center;
+}
+.about_me h1{
+  text-align: center;
+}
+.project-card {
+  position: relative;
+  width: 400px;
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+.footer{
+  width: 50%;
+}
+.footer *{
+text-align: center;
+}
+.footer-container *{
+  width: 100%;
+text-align: center;
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+}
+}
+</style>
+
+  </head>
+  <body>
+    <!-- Элемент для возврата в начало страницы -->
+    <div id="top"></div>
+    <div class="box">
+      <nav>
+        <h1 class="nav_text">
+          &lt;/<span class="cyan">Portfolio</span>&gt;
+        </h1>
+        <div class="nav_links">
+          <a href="#top">
+            <span class="nav_slash">//</span><span class="nav_text_link">Главная</span>
+          </a>
+          <a href="#about_me">
+            <span class="nav_slash">//</span><span class="nav_text_link">Обо мне</span>
+          </a>
+          <a href="#skills_blocks">
+            <span class="nav_slash">//</span><span class="nav_text_link">Умения</span>
+          </a>
+          <a href="#robots">
+            <span class="nav_slash">//</span><span class="nav_text_link">Роботы</span>
+          </a>
+          <a href="#contacts">
+            <span class="nav_slash">//</span><span class="nav_text_link">Контакты</span>
+          </a>
+        </div>
+        
+      </nav>
+      <img class="fone_header" src="img/ChatGPT Image 4 черв. 2025 р., 18_57_45.png" alt="">
+      <img class="sun_header" src="img/ChatGPT Image 4 черв. 2025 р., 18_54_59.png" alt="">
+      <header>
+        <h1 class="header_text">Aleksey</h1>
+        <h4 class="header_pre_text">Web-Developer.</h4>
+      </header>
+      <main>
+        <h1 class="main_text">Soft Skills & Hard Skills</h1>
+<div id="skills_blocks" class="skills_blocks">
+  <!-- Soft Skills -->
+  <div class="skills_block soft animate">
+    <div class="skills_header">
+      <img class="skills_icon" src="img/gear.png" alt="Soft Skills Icon">
+      <h1 class="skills_text">Soft Skills</h1>
+    </div>
+    <h2 class="skills_text2">Характеристика</h2>
+    <ul>
+      <li>Коммуникабельность</li>
+      <li>Терпение</li>
+      <li>Умение слушать</li>
+      <li>Эмпатия</li>
+      <li>Креативность</li>
+      <li>Лидерство</li>
+      <li>Адаптивность</li>
+      <li>Конфликт-менеджмент</li>
+      <li>Тайм-менеджмент</li>
+      <li>Организованность</li>
+      <li>Самомотивация</li>
+      <li>Командная работа</li>
+    </ul>
   </div>
-  <div class="block droppable" id="jqMethodsBlock">
-    <h3>jQuery Methods</h3>
+
+  <!-- Hard Skills -->
+  <div class="skills_block hard animate">
+    <div class="skills_header">
+      <img class="skills_icon" src="img/icons8-imac-50.png" alt="Hard Skills Icon">
+      <h1 class="skills_text">Hard Skills</h1>
+    </div>
+    <h2 class="skills_text2">Технические навыки</h2>
+    <ul class="hard_skills_ul">
+      <li>HTML5, CSS3, адаптивная верстка</li>
+      <li>Flexbox, Grid, CSS-анимации</li>
+      <li>JavaScript, jQuery</li>
+      <li>PHP, MySQL</li>
+      <li>React (начальный уровень)</li>
+      <li>WordPress: темы и плагины</li>
+      <li>Работа с SVG, оптимизация</li>
+      <li>Интеграция API</li>
+    </ul>
   </div>
 </div>
 
-<div id="methodsContainer">
-  <div class="draggable jq">text</div>
-  <div class="draggable js">style</div>
-  <div class="draggable jq">hide</div>
-  <div class="draggable js">innerHTML</div>
-  <div class="draggable jq">css</div>
-  <div class="draggable jq">val</div>
-  <div class="draggable js">value</div>
-  <div class="draggable js">querySelector</div>
-  <div class="draggable jq">toggle</div>
-  <div class="draggable js">addEventListener</div>
+
+        </div>
+        <!-- Главное изображение -->
+        <img class="main_img animate" src="img/photo_2025-06-04_11-50-47-removebg-preview.png" alt="Главное изображение">
+        <!-- Секция "Обо мне" с анимацией -->
+  <div id="about_me" class="about_me animate">
+  <div class="about_me_text">
+    <h1>Про меня</h1>
+    <p>
+      Привет, я Леша, человек, который никогда не представлял, что будет что‑то программировать, а сейчас сам от себя в шоке.  
+      Я умею:
+      <ul>
+        <li>гибко адаптироваться к любым дедлайнам и временным рамкам;</li>
+        <li>переживать критические правки с достоинством (и пачкой кофеина);</li>
+        <li>находить общий язык даже с самой загадочной технической задачей;</li>
+        <li>давать всем вокруг уверенность, что «всё будет готово вовремя»;</li>
+        <li>сидеть, сохранять спокойствие и наблюдать, как сервер падает в 23:59.</li>
+      </ul>
+      В свободное время занимаюсь музыкой — играю на барабанах и бас‑гитаре.  
+      Обожаю чистый код, тёмную тему в VSC.  
+      Если ты хочешь стать моим клиентом — ты не пожалеешь.  
+    </p>
+  </div>
+  <div class="about_me_img">
+    <img src="https://lh3.googleusercontent.com/WNufntiI65EUP5nUC8pnQGnm95NUxU9Eilo8dsS_M_ZbpvaNlSC9RktuaFoRGTwNVonGW_d1Ul7Tbxu28mgV_1fDnefg2BJChvpnIRUwGNFOx4-sCA8yZljjI8FL9vFqa2ILmNmhlt1tmjhkExBH3L0" alt="Леша — про меня">
+  </div>
 </div>
-<button id="checkBtn">Проверить</button>
-<div id="result"></div>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
-<script>
-  $(function() {
-    // Делаем элементы с методами перетаскиваемыми
-    $(".draggable").draggable({
-      revert: "invalid"  // Если элемент не будет помещен в нужный блок, он вернется на исходное место
+
+        </div>
+        <!-- Секция "Роботы" с анимацией -->
+        <div id="robots" class="robots animate">
+          <h1 class="works">Роботы</h1>
+
+ <div class="projects-container">
+  <a href="Metro Boomin/index222.html" target="_blank" class="project-link">
+    <div class="project-card image-metro">
+      <div class="overlay">
+        <div class="overlay-text">Show Project</div>
+      </div>
+      <div class="project-info">
+        <div class="project-title">Metro Boomin</div>
+        <div class="project-category">Web Development</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="bolda/index.html" target="_blank" class="project-link">
+    <div class="project-card image-bolda">
+      <div class="overlay">
+        <div class="overlay-text">Show Project</div>
+      </div>
+      <div class="project-info">
+        <div class="project-title">Bolda</div>
+        <div class="project-category">Web Development</div>
+      </div>
+    </div>
+  </a>
+
+  <a href="genb/index.html" target="_blank" class="project-link">
+    <div class="project-card image-traveloo">
+      <div class="overlay">
+        <div class="overlay-text">Show Project</div>
+      </div>
+      <div class="project-info">
+        <div class="project-title">Traveloo</div>
+        <div class="project-category">Web Development</div>
+      </div>
+    </div>
+  </a>
+    <a href="aaaa/index.html" target="_blank" class="project-link">
+    <div class="project-card image-saveukraine">
+      <div class="overlay">
+        <div class="overlay-text">Show Project</div>
+      </div>
+      <div class="project-info">
+        <div class="project-title">Save Ukraine</div>
+        <div class="project-category">Web Development</div>
+      </div>
+    </div>
+  </a>
+</div>
+        </div>
+        <!-- Секция "Контакты" с анимацией -->
+        <div id="contacts" class="contacts animate">
+           <div class="footer-container">
+    <div class="footer-contact">
+      <h3>Contact</h3>
+      <p>Email: lesha.zalom.sgkm11@gmail.com</p>
+      <p>Phone: +380 98 455 1036</p>
+    </div>
+
+    <div class="footer-social">
+      <h3>Follow Me</h3>
+      <div class="social-icons">
+        <a href="https://github.com/lipkiyzad" target="_blank" aria-label="GitHub">
+          <i class="fab fa-github">GitHub</i>
+        </a>
+        <a href="https://www.instagram.com/yourusername" target="_blank" aria-label="Instagram">
+          <i class="fab fa-instagram">Instagram</i>
+        </a>
+        <a href="https://www.tiktok.com/@my_m1nd1" target="_blank" aria-label="TikTok">
+          <i class="fab fa-tiktok">TikTok</i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+
+
+        </div>
+      </main>
+      <footer>
+        <h1>
+        Разработано Заломским Алексеем 2025
+        </h1>
+      </footer>
+    </div>
+ <script>
+  document.addEventListener('DOMContentLoaded', function () {
+    // Анимация появления блоков с классом .animate
+    const animateElements = document.querySelectorAll('.animate');
+
+    animateElements.forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(40px) scale(0.95)';
     });
 
-    // Делаем блок для методов JS приемником
-    $("#jsMethodsBlock").droppable({
-      accept: '.draggable',  // Принимаем только элементы с data-method-type="js"
-      hoverClass: "highlight",  // Класс при наведении на блок
-      drop: function(event, ui) {
-        $(this).append(ui.draggable);
-      }
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.style.opacity = '1';
+          entry.target.style.transform = 'translateY(0) scale(1)';
+          entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.2
     });
 
-    // Делаем блок для методов jQuery приемником
-    $("#jqMethodsBlock").droppable({
-      accept: '.draggable',  // Принимаем только элементы с data-method-type="jq"
-      hoverClass: "highlight",  // Класс при наведении на блок
-      drop: function(event, ui) {
-        $(this).append(ui.draggable);
-      }
-    });
-    $("#checkBtn").click(function() {
-      let jsCorrect = $("#jsMethodsBlock").children(".js").length === 5;
-      let jqCorrect = $("#jqMethodsBlock").children(".jq").length === 5;
+    animateElements.forEach(el => observer.observe(el));
 
-      if (jsCorrect && jqCorrect) {
-       alert("Все элементы правильно разложены!");
-      } else {
-       alert("Есть ошибки в расположении элементов.");
-      }
-    });
+    // Отмена прокрутки, если уже вверху при клике на "Главная"
+    const homeLink = document.querySelector('a[href="#top"]');
+    if (homeLink) {
+      homeLink.addEventListener('click', function (e) {
+        if (window.scrollY < 50) {
+          e.preventDefault();
+        }
+      });
+    }
+  });
+        const img = document.querySelector('.about_me_img img');
+console.log('natural:', img.naturalWidth, '×', img.naturalHeight);
+console.log('displayed:', img.clientWidth, '×', img.clientHeight);
+
+  const toggleBtn = document.getElementById('toggleBtn');
+  const sidePanel = document.getElementById('sidePanel');
+  const closeBtn = document.getElementById('closeBtn');
+
+  toggleBtn.addEventListener('click', () => {
+    sidePanel.style.right = '0'; // показываем панель, сдвигаем к правому краю
+  });
+
+  closeBtn.addEventListener('click', () => {
+    sidePanel.style.right = '-300px'; // скрываем панель обратно
   });
 </script>
 
-</body>
+    <style>
+      /* Классы, добавляемые при появлении элемента */
+      .slide-left {
+        transform: translateX(0) !important;
+        opacity: 1 !important;
+      }
+      .slide-right {
+        transform: translateX(0) !important;
+        opacity: 1 !important;
+      }
+
+
+    </style>
+  </body>
 </html>
+ 
