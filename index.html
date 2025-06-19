@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Drag and Drop JS vs jQuery</title>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .container {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 50px;
+    }
+    .block {
+      width: 200px;
+      height: 300px;
+      border: 2px solid #333;
+      padding: 10px;
+      background-color: #f9f9f9;
+      overflow: auto;
+      position: relative;
+    }
+    .draggable {
+      margin: 5px;
+      padding: 10px;
+      background-color: #b0c4de;
+      cursor: grab;
+      display: inline-block;
+    }
+    .droppable {
+      background-color: #f1f1f1;
+    }
+    .highlight {
+      border: 2px dashed #00bfff;
+    }
+    .ui-draggable-dragging{
+        color:red;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="block droppable" id="jsMethodsBlock">
+    <h3>JS Methods</h3>
+  </div>
+  <div class="block droppable" id="jqMethodsBlock">
+    <h3>jQuery Methods</h3>
+  </div>
+</div>
+
+<div id="methodsContainer">
+  <div class="draggable jq">text</div>
+  <div class="draggable js">style</div>
+  <div class="draggable jq">hide</div>
+  <div class="draggable js">innerHTML</div>
+  <div class="draggable jq">css</div>
+  <div class="draggable jq">val</div>
+  <div class="draggable js">value</div>
+  <div class="draggable js">querySelector</div>
+  <div class="draggable jq">toggle</div>
+  <div class="draggable js">addEventListener</div>
+</div>
+<button id="checkBtn">Проверить</button>
+<div id="result"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+<script>
+  $(function() {
+    // Делаем элементы с методами перетаскиваемыми
+    $(".draggable").draggable({
+      revert: "invalid"  // Если элемент не будет помещен в нужный блок, он вернется на исходное место
+    });
+
+    // Делаем блок для методов JS приемником
+    $("#jsMethodsBlock").droppable({
+      accept: '.draggable',  // Принимаем только элементы с data-method-type="js"
+      hoverClass: "highlight",  // Класс при наведении на блок
+      drop: function(event, ui) {
+        $(this).append(ui.draggable);
+      }
+    });
+
+    // Делаем блок для методов jQuery приемником
+    $("#jqMethodsBlock").droppable({
+      accept: '.draggable',  // Принимаем только элементы с data-method-type="jq"
+      hoverClass: "highlight",  // Класс при наведении на блок
+      drop: function(event, ui) {
+        $(this).append(ui.draggable);
+      }
+    });
+    $("#checkBtn").click(function() {
+      let jsCorrect = $("#jsMethodsBlock").children(".js").length === 5;
+      let jqCorrect = $("#jqMethodsBlock").children(".jq").length === 5;
+
+      if (jsCorrect && jqCorrect) {
+       alert("Все элементы правильно разложены!");
+      } else {
+       alert("Есть ошибки в расположении элементов.");
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
