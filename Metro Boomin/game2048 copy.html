@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бесконечное вращение картинок вокруг страницы</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .image {
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            background-size: cover;
+            transform-origin: center center;
+        }
+    </style>
+</head>
+<body>
+
+<div class="image-container">
+    <div class="image" style="background-image: url('https://vignette3.wikia.nocookie.net/geometry-dash/images/3/36/Llave.png/revision/latest?cb=20160308003427&path-prefix=es');"></div>
+    <div class="image" style="background-image: url('https://vignette3.wikia.nocookie.net/geometry-dash/images/3/36/Llave.png/revision/latest?cb=20160308003427&path-prefix=es');"></div>
+    <div class="image" style="background-image: url('https://vignette3.wikia.nocookie.net/geometry-dash/images/3/36/Llave.png/revision/latest?cb=20160308003427&path-prefix=es');"></div>
+    <div class="image" style="background-image: url('https://vignette3.wikia.nocookie.net/geometry-dash/images/3/36/Llave.png/revision/latest?cb=20160308003427&path-prefix=es');"></div>
+    <div class="image" style="background-image: url('https://vignette3.wikia.nocookie.net/geometry-dash/images/3/36/Llave.png/revision/latest?cb=20160308003427&path-prefix=es');"></div>
+    <div class="image" style="background-image: url('https://vignette3.wikia.nocookie.net/geometry-dash/images/3/36/Llave.png/revision/latest?cb=20160308003427&path-prefix=es');"></div>
+    <div class="image" style="background-image: url('https://vignette3.wikia.nocookie.net/geometry-dash/images/3/36/Llave.png/revision/latest?cb=20160308003427&path-prefix=es');"></div>
+    <div class="image" style="background-image: url('https://vignette3.wikia.nocookie.net/geometry-dash/images/3/36/Llave.png/revision/latest?cb=20160308003427&path-prefix=es');"></div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        $('.image').each(function(index) {
+            rotateImage($(this), index *65);
+        });
+    });
+
+    function rotateImage(element, initialRotation) {
+        var rotation = initialRotation;
+        setInterval(function() {
+            rotation += 1.0;
+            element.css({
+                transform: 'rotate(' + rotation + 'deg)',
+            });
+        }, 16);
+    }
+</script>
+
+</body>
+</html>

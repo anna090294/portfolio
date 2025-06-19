@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="" type="image/x-icon">
+    <link rel="stylesheet" href="style3.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <style>
+        body{
+            background: url(https://media.istockphoto.com/id/1210655852/ru/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F/%D0%B0%D0%B1%D1%81%D1%82%D1%80%D0%B0%D0%BA%D1%82%D0%BD%D1%8B%D0%B9-%D0%B3%D1%80%D0%B0%D0%B4%D0%B8%D0%B5%D0%BD%D1%82-%D0%BF%D1%83%D1%81%D1%82%D0%BE%D0%B9-%D1%80%D0%B0%D0%B7%D0%BC%D1%8B%D1%82%D1%8B%D0%B9-%D1%84%D0%B8%D0%BE%D0%BB%D0%B5%D1%82%D0%BE%D0%B2%D1%8B%D0%B9-%D1%84%D0%BE%D0%BD-%D1%80%D0%BE%D0%B7%D0%BE%D0%B2%D1%8B%D0%B9-%D1%81%D0%B8%D0%BD%D0%B8%D0%B9-%D1%84%D0%B8%D0%BE%D0%BB%D0%B5%D1%82%D0%BE%D0%B2%D1%8B%D0%B9-%D1%84%D0%B8%D0%BE%D0%BB%D0%B5%D1%82%D0%BE%D0%B2%D1%8B%D0%B9.jpg?s=170667a&w=0&k=20&c=e8NSnF9lignPYHhVuaeGrDGg5dNg0ZXBvgw9gl-PBX4=);
+            background-size: 100% 100%;
+   
+        }
+        .contas{
+            background: url(https://media.istockphoto.com/id/1210655852/ru/%D0%B2%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%BD%D0%B0%D1%8F/%D0%B0%D0%B1%D1%81%D1%82%D1%80%D0%B0%D0%BA%D1%82%D0%BD%D1%8B%D0%B9-%D0%B3%D1%80%D0%B0%D0%B4%D0%B8%D0%B5%D0%BD%D1%82-%D0%BF%D1%83%D1%81%D1%82%D0%BE%D0%B9-%D1%80%D0%B0%D0%B7%D0%BC%D1%8B%D1%82%D1%8B%D0%B9-%D1%84%D0%B8%D0%BE%D0%BB%D0%B5%D1%82%D0%BE%D0%B2%D1%8B%D0%B9-%D1%84%D0%BE%D0%BD-%D1%80%D0%BE%D0%B7%D0%BE%D0%B2%D1%8B%D0%B9-%D1%81%D0%B8%D0%BD%D0%B8%D0%B9-%D1%84%D0%B8%D0%BE%D0%BB%D0%B5%D1%82%D0%BE%D0%B2%D1%8B%D0%B9-%D1%84%D0%B8%D0%BE%D0%BB%D0%B5%D1%82%D0%BE%D0%B2%D1%8B%D0%B9.jpg?s=170667a&w=0&k=20&c=e8NSnF9lignPYHhVuaeGrDGg5dNg0ZXBvgw9gl-PBX4=);
+            background-size: 100% 100%;
+ 
+        }
+        .contas,
+.money img,
+#balance,
+.acc h2,
+.palochka1,
+label,
+.input11,
+.input33,
+.parolvidimost1 input[type="checkbox"],
+.parolvidimost1,
+.palochka22,
+.input44,
+.pindare,
+.profilnameandimage .keb .profilimage img,
+.profilnameandimage .keb input[type="file"],
+.boxin1 h3,
+.boxin1 .greeting1,
+.boxin1 .greeting2,
+.boxin1 img,
+.profilbox2 .profilbox2_box h4,
+.profilbox2 .profilbox2_box h5,
+.profilbox2 .iret {
+    color: white;
+}
+.box{
+    width: 500px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-content: flex-end;
+    flex-wrap: wrap;
+    z-index: 10;
+    margin-right: 60px;
+    margin-left: -20px;
+    animation: fadeInUp 3s ease forwards;
+}
+.links{
+    width: 100%;
+    height: 100px;
+    
+  margin-top:100px;
+  padding-top: 65px;
+  display: flex;
+
+ 
+   
+}
+a {
+    width: 25%;
+	position: relative;
+	color: white; /*задаём цвет ссылки*/
+	cursor: pointer;
+	line-height: 1; /*задаём высоту строки*/
+	text-decoration: none; /*убираем подчёркивание*/
+    margin-right: 7px;
+    margin-left: 7px;
+
+}
+a:after {
+	display: block;
+	position: absolute;
+	left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+	width: 0;/*задаём длинну линии до наведения курсора*/
+	height: 2px; /*задаём ширину линии*/
+	background-color: white; /*задаём цвет линии*/
+	content: "";
+	transition: width 0.3s ease-out; /*задаём время анимации*/
+}
+
+a:hover:after,
+a:focus:after {
+	width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+}
+.profilimage{
+    display: flex;
+   
+    
+}
+body{
+    animation: fadeInUp 1s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+    </style>
+</head>
+    <body>
+
+  
+      <div class="contas">
+        
+        <div class="acc">
+            <h2><b>Ваш обліковий запис!</b></h2>
+            <div class="palochka1"></div>
+            <label for="username">Ім'я користувача:</label>
+            <input style="color: black;" class="input11" type="text" id="username" name="username">
+
+
+            <label for="password">Пароль:</label>
+            <input style="color: black;" class="input33" type="password" id="password" name="password">
+            
+            <div class="parolvidimost1">
+                <input type="checkbox" id="parolvidno1">
+                Показати пароль
+            </div>
+            <div class="palochka22"></div>
+            <input style="color: black;" class="input44" type="button" value="Створити обліковий запис">
+        </div>
+        <img src="img/pinda.jpg" class="pindare" alt="">
+        <div class="profilnameandimage">
+            <div class="keb">
+                
+                <div class="profilimage">
+                    <img class="profilimage" src="default-profile-image.jpg" alt="Profile Image">
+                    
+                </div>
+                <input style="width: 70%;  font-family: 'Comfortaa', sans-serif;" type="file" id="profile-image-input" value="обрати аватарку" accept="image/*" onchange="previewProfileImage(event)">
+            </div>
+            
+            <div class="boxin1">
+                <h3 id="greeting"></h3>
+                <h4 class="greeting1">Дата реєстрації:</h4>
+                
+                <h5 class="greeting2"></h5>
+               
+               
+               
+        </div>
+        <div class="box">
+            <img style="width: 100px; height: 100px;" src="img/logo1.png">
+            <div style="margin-top: -40px; margin-bottom: 40px;" class="links">
+            
+                <a href="index.html">Головна</a>
+                <a href="magazine.html">Магазин</a> 
+                <a href="support.html">Підтримка</a>
+                <a href="avatar.html">Аватар</a>
+            </div>
+        </div>
+    </div>
+        <div class="profilbox2">
+            <div class="profilbox2_box">
+                <h4>Мова сайту: </h4> <h5>Українська</h5>
+               
+                <h4>Монети:</h4> <h5 id="ryti"></h5>
+                <h4>Про себе:</h4>
+                <textarea style="background: white; color: black; width: 80%; border-radius: 20px; font-size: 16px;
+                color: black;
+                padding-left: 10px; padding-top: 10px; padding-left: 10px;" class="ddddd" name="message" cols="10" rows="7" placeholder="Введіть щось про себе" required></textarea>
+            </div>
+            <img src="img/mlp.png" class="iret" alt="">
+            
+        </div>
+    </div>
+
+    <script>
+        
+        // Инициализируем массив для хранения данных
+let dataArray = [];
+
+// Обработчик события ввода текста в поле textarea
+$(".ddddd").on("input", function() {
+    // Получаем текущее значение из поля textarea
+    let currentValue = $(this).val();
+    
+    // Очищаем массив перед каждым обновлением
+    dataArray = [];
+    
+    // Разбиваем текущее значение на массив букв
+    let lettersArray = currentValue.split('');
+    
+    // Записываем каждую букву в массив данных
+    lettersArray.forEach(letter => {
+        dataArray.push(letter);
+    });
+    
+    // Сохраняем массив данных в локальное хранилище
+    localStorage.setItem("dataArray", JSON.stringify(dataArray));
+});
+
+// При загрузке страницы восстанавливаем данные из локального хранилища
+$(document).ready(function() {
+    let storedData = localStorage.getItem("dataArray");
+    if (storedData) {
+        // Если есть сохраненные данные, преобразуем их обратно в массив и объединяем в строку
+        let dataArray = JSON.parse(storedData);
+        let textValue = dataArray.join('');
+        
+        // Устанавливаем текстовое значение в поле textarea
+        $(".ddddd").val(textValue);
+    }
+});
+
+        $(document).ready(function() {
+    $(".pindare").hide();
+    let money = +localStorage.getItem("money") || 0;
+    $("#balance").text(money);
+    
+    let registered = localStorage.getItem("registered");
+    if (registered) {
+        $(".acc").hide();
+        $(".profilnameandimage").css({filter:"blur(0px)"});
+        $(".profilbox2").css({filter:"blur(0px)"});
+    }
+
+    $(".iret").click(function() {
+        $(".pindare").show();
+        $(".hamburger-menu").hide();
+        $(".profilbox2").hide();
+        $(".profilnameandimage").hide();
+    });
+
+    document.body.addEventListener('click', function playAudio() {
+        let Audio5 = new Audio();
+        Audio5.src = "audio/haha.mp3";
+        Audio5.volume = 1;
+        Audio5.addEventListener('ended', function() {
+            Audio5.currentTime = 0;
+            Audio5.play();
+        });
+        Audio5.play();
+        document.body.removeEventListener('click', playAudio);
+        
+        let element = document.documentElement;
+
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        }
+    });
+
+    let registrationDate = localStorage.getItem('registrationDate');
+    if (!registrationDate) {
+        let currentDate = new Date();
+        registrationDate = currentDate.toLocaleDateString();
+        localStorage.setItem('registrationDate', registrationDate);
+    }
+    $(".greeting2").text(registrationDate);
+
+    $(".imp").hide();
+    $(".money").click(function(){
+        $(".profilnameandimage").hide();
+        $(".profilbox2").hide();
+        $(".acc").hide();
+        $(".contas").hide();
+        $(".hamburger-menu").hide();
+        let videoContainer = $("<div class='video-container'></div>");
+        let videoIframe = $("<iframe width='100%' height='100%' src='httpsutube.com/embed/qRC4Vk6kisY?autoplay=1' title='FPMV: &quot;PFUDOR&quot;' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'></iframe>");
+        videoContainer.append(videoIframe); 
+        $("body").append(videoContainer);
+        videoIframe.get(0).src += "&autoplay=1";
+        let element = document.documentElement;
+
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        }
+    });
+
+    let impera = localStorage.getItem("imapers");
+    $("#tyti").text(impera);
+    $(".acc1").hide();
+    $(".money").css({opacity:"1"});
+    $("#ryti").text(money)
+
+    let savedAvatar = localStorage.getItem('avatar');
+    if (savedAvatar) {
+        $('.profilimage').attr('src', savedAvatar);
+    }
+
+    let savedUsername = localStorage.getItem('username');
+    if (savedUsername) {
+        $("#username").val(savedUsername);
+        $("#greeting").text("Привет " + savedUsername + "!");
+    }
+
+    $('#profile-image-input').change(function(event) {
+        previewProfileImage(event);
+    });
+
+    function previewProfileImage(event) {
+        let input = event.target;
+        let reader = new FileReader();
+
+        reader.onload = function(){
+            let profileImagePreview = $('.profilimage');
+            profileImagePreview.attr('src', reader.result);
+            localStorage.setItem('avatar', reader.result);
+        };
+
+        reader.readAsDataURL(input.files[0]);
+    }
+
+    $("#parolvidno1").click(function() {
+        let passwordInput = $('#password');
+        passwordInput.attr('type', $('#parolvidno1').prop('checked') ? 'text' : 'password');
+    });
+
+    $(".acc a").click(function(){
+        $(".acc").hide()
+        $(".acc1").show()
+    });
+    $(".acc1 a").click(function(){
+        $(".acc1").hide()
+        $(".acc").show()
+    });
+
+    $(".input44").click(function() {
+        let username = $("#username").val();
+        localStorage.setItem("username", username);
+        localStorage.setItem("registered", true);
+        $(".acc").hide();
+        $(".profilnameandimage").css({filter:"blur(0px)"});
+        $(".profilbox2").css({filter:"blur(0px)"});
+        $("#greeting").text("Привіт " + username + "!");
+    });
+});
+
+        
+    </script>
+</body>
+</html>

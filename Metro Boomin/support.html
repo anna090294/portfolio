@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="icon" href="" type="image/x-icon">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="css/test.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Monoton&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik+Doodle+Shadow&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="img/logo1.png">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@300&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.all.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.10.4/dist/sweetalert2.min.css" rel="stylesheet">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <style>
+        html, body {
+            overflow: hidden;
+        }
+
+        .box{
+            width: 100%;
+            height: 150px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-bottom: 400px;
+        }
+        .links{
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .links > a{
+            width: 50%;
+        }
+        .vvvv{
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .box{
+            width: 90%;
+            margin: 0 auto;
+            height: 200px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            margin-bottom: -90px;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        .links{
+            width: 23%;
+            display: flex;
+            justify-content: space-around;
+        }
+        a {
+            font-family: 'Comfortaa', sans-serif;
+            position: relative;
+            color: white; /*задаём цвет ссылки*/
+            cursor: pointer;
+            line-height: 1; /*задаём высоту строки*/
+            text-decoration: none; /*убираем подчёркивание*/
+        }
+        a:after {
+            display: block;
+            position: absolute;
+            left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+            width: 0;/*задаём длинну линии до наведения курсора*/
+            height: 2px; /*задаём ширину линии*/
+            background-color: white; /*задаём цвет линии*/
+            content: "";
+            transition: width 0.3s ease-out; /*задаём время анимации*/
+        }
+        .links{
+    width: 27%;
+    display: flex;
+
+    justify-content: space-around;
+}
+a {
+	position: relative;
+	color: white; /*задаём цвет ссылки*/
+	cursor: pointer;
+	line-height: 1; /*задаём высоту строки*/
+	text-decoration: none; /*убираем подчёркивание*/
+    margin-left: 5px;
+    margin-right: 5px;
+
+}
+a:after {
+	display: block;
+	position: absolute;
+	left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+	width: 0;/*задаём длинну линии до наведения курсора*/
+	height: 2px; /*задаём ширину линии*/
+	background-color: white; /*задаём цвет линии*/
+	content: "";
+	transition: width 0.3s ease-out; /*задаём время анимации*/
+}
+
+a:hover:after,
+a:focus:after {
+	width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+}
+        a:hover:after,
+        a:focus:after {
+            width: 70%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+        }
+        .onas_text{
+            font-family: 'Comfortaa', sans-serif;
+        }
+        .onas h1{
+            font-family: 'Comfortaa', sans-serif;
+        }
+        .onas h2{
+            font-family: 'Comfortaa', sans-serif;
+            color: white;
+        }
+        .knopka{
+            font-family: 'Comfortaa', sans-serif;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            emailjs.init('vUS1byMwd4DAibuPx');
+
+            document.querySelector('#contact-form').addEventListener('submit', function(event) {
+                event.preventDefault();
+                // Получаем значение поля электронной почты
+                var email = this.querySelector('textarea[name="message"]').value;
+                // Проверяем, содержит ли адрес электронной почты '@gmail.com'
+                if (email.indexOf('@gmail.com') === -1) {
+                    // Если не содержит, выводим сообщение о запросе адреса электронной почты
+                    Swal.fire("Будьласка, ведіть свій email", "", "info");
+                    return; // Прерываем отправку формы
+                }
+                // Если содержит '@gmail.com', продолжаем отправку формы
+                emailjs.sendForm('default_service', 'template_o6eiu3g', this)
+                    .then(function() {
+                        console.log('Відправлено');
+                        Swal.fire("Відправлено");
+                    }, function(error) {
+                        console.log('Помилка', error);
+                        Swal.fire("Помилка");
+                    });
+            });
+        };
+
+        $(document).ready(function() {
+            $(".money").css({opacity:"1"})
+        });
+    </script>
+</head>
+<body>
+<div class="box">
+    <img class="logo" src="img/logo1.png">
+    <div class="links">
+        <a href="index.html">Головна</a>
+        <a href="magazine.html">Магазин</a> 
+        <a href="support.html">Підтримка</a>
+        <a href="avatar.html">Аватар</a>
+    </div>
+</div>
+<div class="onas">
+    <h1>Для вас, цей проект зробила команда із 2 осіб</h1>
+    <h2>Назар і Олексій</h2>
+
+    <form class="onas_text" id="contact-form">
+        Якщо у вас винекли якісь проблеми<br>
+        Напишить нам
+        <textarea style="background: white; color: black;" class="ddddd" name="message" cols="10" rows="7" placeholder="Введіть своє повідомлення" required></textarea>
+        <div class="palka"></div>
+        <input class="knopka" type="submit" value="Відправити">
+    </form>
+</div>
+
+<script>
+    
+    let money = +localStorage.getItem("money") || 0;
+    $("#balance").text(money);
+    $(".imp").hide();
+
+    $(".money").click(function(){
+        $(".hamburger-menu").hide();
+        $(".onas").hide();
+        $(".money").hide();
+        let videoContainer = $("<div class='video-container'></div>");
+        let videoIframe = $("<iframe width='100%' height='100%' src='https://www.youtubC4Vk6kisY?autoplay=1' title='FPMV: &quot;PFUDOR&quot;' frameborder='0' allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'></iframe>");
+        videoContainer.append(videoIframe);
+        $("body").append(videoContainer);
+        videoIframe.get(0).src += "&autoplay=1";
+        let element = document.documentElement;
+
+        if (element.requestFullscreen) {
+            element.requestFullscreen();
+        } else if (element.mozRequestFullScreen) {
+            element.mozRequestFullScreen();
+        } else if (element.webkitRequestFullscreen) {
+            element.webkitRequestFullscreen();
+        } else if (element.msRequestFullscreen) {
+            element.msRequestFullscreen();
+        }
+    });
+</script>
+</body>
+</html>

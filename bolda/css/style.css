@@ -1,0 +1,646 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.box{
+    width: 100%;
+}
+header{
+width: 100%;
+height: 700px;
+background: #0a2640;
+padding-left: 10%;
+padding-right: 10%;
+display: flex;
+flex-wrap: wrap;
+justify-content: space-between;
+align-content: space-around;
+}
+.header__box1{
+    width: 50%;
+    height: 100px;
+    display: flex;
+   align-items: center;
+}
+.header__box2{
+    width: 37%;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.header__box3{
+    width: 50%;
+    height: 350px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+.header__box4{
+    width: 40%;
+    height:400px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: space-between;
+}
+.header__box5{
+    width: 100%;
+    height: 100px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.header__mini_container1{
+    width: 100%;
+    height:200px;
+    border-radius: 15px;
+    background:#1C3D5B;
+    display: flex;
+    flex-wrap: wrap;
+}
+.mini__hedaer1{
+    width: 37%;
+    height:165.34px;
+    background: 
+    #1C3D5B;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+}
+a{
+    font-size: 18px;
+    color: white;
+    text-decoration: none;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+
+}
+.da{
+    width: 100px;
+    height: 40px;
+    background: white;
+    border-radius: 30px;
+    font-weight: bold;
+    border: 1px solid white;
+    font-size: 18px;
+    font-family: 'Open Sans', sans-serif;
+}
+.box3__input{
+    width: 200px;
+    height: 50px;
+    background: #65E4A3;
+    border-radius: 30px;
+    border:#65E4A3;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 
+    20px;
+}
+.box3__input1{
+    width: 187px;
+    height: 50px;
+    background:#0a2640;
+    border-radius: 30px;
+    border: 1px solid white;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+}
+h1{
+    color: white;
+    font-size: 48px;
+    font-family: 'Manrope', sans-serif;
+    font-weight: bold;
+}
+.baba{
+    
+font-size: 16px;
+    color: white;
+    font-family: 'Manrope', sans-serif;
+    font-weight: bold;
+
+}
+.box__input{
+    width: 420px;
+    display: flex;
+    justify-content: space-around;
+}
+.terran{
+    width: 50px;
+    height: 10px;
+    margin-left: 20px;
+    margin-top:20px;
+}
+.pols{
+    width: 20%;
+    height: 20px;
+    background: lightgrey;
+    border-radius:40px;
+}
+.header__cont{
+    width: 100%;
+    height: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 20px;
+}
+.pols1{
+    width: 75%;
+    height: 20px;
+    border-radius: 40px;
+    background: lightgrey;
+    animation: anim1 2s infinite linear alternate ;
+    animation-delay: 0.5s;
+    margin-left: 20px;
+}
+.pols2{
+    width: 75%;
+    height: 20px;
+    border-radius: 40px;
+    background: #0DBBFC;
+    animation: anim1 2s infinite linear alternate ;
+    animation-delay: 2s;
+    margin-left: 20px;
+}
+.pols3{
+    width: 75%;
+    height: 20px;
+    border-radius: 40px;
+    background: #FFFFFF;
+    animation: anim1 2s infinite linear alternate ;
+    animation-delay: 1s;
+    margin-left: 20px;
+}
+
+.pols4{
+    width: 75%;
+    height: 20px;
+    border-radius: 40px;
+    background: #65E4A3;  
+    animation: anim1 2s infinite linear alternate ;
+    animation-delay: 1.5s;
+    margin-left: 20px;
+}
+@keyframes anim1{
+ 100%{
+    width:20%;
+ }
+}
+.terran1{
+    Width:139.57px;
+    Height:106.29px;
+    margin-left: 30px;
+    margin-bottom:7px;
+
+}
+.mini__hedaer{
+    width: 60%;
+    height:165.34px;
+    background: 
+    #1C3D5B;
+    border-radius: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.terran2{
+Width:92.99px;
+Height:93.2px;
+display: flex;
+margin-bottom: 10px;
+animation: anim2 2s linear infinite;
+}
+.terran3{
+    Width:76px;
+    Height:60px;
+    margin-top: 10px;
+    }
+    .auto{
+        width: 80%;
+        margin-left: 20px;
+        height: auto;
+        display: flex;
+        justify-content:space-around;
+        align-self: center;
+    }
+    @keyframes anim2{
+        100%{
+          transform: rotate(360deg);
+        }
+
+    }
+.dada{
+    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+    text-align: center;
+}
+.dada1{
+font-size: 48px;
+color: black;
+    font-family: 'Manrope', sans-serif;
+    text-align: center;
+}
+main{
+    width: 100%;
+    height: 400px;
+
+}
+.main__box{
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 90px;
+}
+.dada12{
+    font-size: 24px;
+    font-family: 'Open Sans', sans-serif;
+    color: black;
+ 
+}
+.chacha{
+	position: relative;
+	color: black; 
+	cursor: pointer;
+	line-height: 1; 
+	text-decoration: none;
+    display: flex;
+    align-items: flex-end;
+
+}
+.chacha:after {
+	display: block;
+	position: absolute;
+	left: 0; 
+	width: 0;
+	height: 2px; 
+	background-color: black;
+	content: "";
+	transition: width 0.3s ease-out; 
+    display: flex;
+    align-items: flex-end;
+}
+
+.chacha:hover:after,
+.chacha:focus:after {
+	width: 100%; 
+}
+.mama{
+    width: 300px;  
+    height: 575px;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+.caca{
+    Width:24px;
+    Height:26px;
+}
+.chacha{
+    font-weight: bold;
+}
+.babi{
+    font-size: 36px;
+   color: black;
+}
+.main__box1{
+height:610px;
+display: flex;
+align-items: center;
+justify-content: space-around;
+margin-top: 200px;
+}
+.kicky{
+Width:493px;
+height:479px;
+display: flex;
+flex-wrap: wrap;
+align-content: space-between;
+}
+.shishi{
+Width:400px;
+Height:60px;
+box-shadow: 70px;
+display: flex;
+flex-wrap: wrap;
+align-items: center;
+font-weight: bold;
+cursor: pointer;
+}
+p{
+    text-align: center;
+    font-family: 'Open Sans', sans-serif;
+}
+.iop{
+    padding-left: 20px;
+}
+.button{
+    width: 210px;
+    height: 60px;
+    background: #0A2640;
+    color: white;
+    border-radius: 30px;
+    border:1px solid #0A2640;
+    font-weight: bold;
+    font-family: 'Open Sans', sans-serif;
+}
+a{
+	position: relative;
+	color:white; /*задаём цвет ссылки*/
+	cursor: pointer;
+	line-height: 1; /*задаём высоту строки*/
+	text-decoration: none; /*убираем подчёркивание*/
+    display: flex;
+    align-items: flex-end;
+
+}
+a:after {
+	display: block;
+	position: absolute;
+	left: 0; /*изменить на right:0;, чтобы изменить направление подчёркивания */
+	width: 0;/*задаём длинну линии до наведения курсора*/
+	height: 2px; /*задаём ширину линии*/
+	background-color: white; /*задаём цвет линии*/
+	content: "";
+	transition: width 0.3s ease-out; /*задаём время анимации*/
+    border-radius: 30px;
+    display: flex;
+    align-items: flex-end;
+}
+
+a:hover:after,
+a:focus:after {
+	width: 100%; /*устанавливаем значение 100% чтобы ссылка подчёркивалась полностью*/
+}
+.main__box2{
+    width: 100%;
+    height:610px;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 200px;
+    }
+    .shishi1{
+        Width:400px;
+        Height:60px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        font-weight: bold;
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px 1px grey;
+        box-shadow:0 -3em 3em rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+    .shishi2{
+        Width:400px;
+        Height:60px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        font-weight: bold;
+        border-radius: 10px;
+        box-shadow: 1px 1px 1px 1px grey;
+        box-shadow:0 -3em 3em rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+    .shishi3{
+        Width:400px;
+        Height:60px;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        font-weight: bold;
+        border-radius: 10px;
+        box-shadow:0 -3em 3em rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+    section{
+        width: 100%;
+        height: 797px;
+        background: #0A2640;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: space-around;
+       }
+       .box_section{
+        width: 80%;
+        margin: 20px auto;
+        height: 400px;
+        display: flex;
+        justify-content: space-around;
+       }
+       .buttons{
+        width: 80%;
+        margin: 20px auto;
+        height: 139px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+       }
+       .prev, .next{
+        width: 50px;
+        height: 50px;   
+        float: right;
+        margin-left: 20px;
+       }
+       .all{
+        width: 30%;
+        padding: 10px;
+        background: white;
+        border-radius: 10px;
+        color: white;
+        font-size: 35px;
+        text-align: center;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: space-around;
+       }
+       .blo__text{
+        width: 60%;
+        height: 150px;
+        font-size:48px;
+        color: white;
+        font-family: 'Manrope', sans-serif;
+       }
+       .box_main_text{
+        font-size:
+        24px;
+        color: black;
+        text-align:left;
+        font-family: 'Manrope', sans-serif;
+        padding-left: 30px;
+        padding-top: 30px;
+       }
+       .chop{
+        width: 12%;
+        height: 70px;
+        display: flex;
+        justify-content: space-between;
+       }
+       .image__block{
+        width: 80%;
+        margin-top: 100px;
+        background-color: white;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin: 0 auto;
+       }
+       .image__block img{
+        width: 100%;
+       }
+       .text__block h1{
+        color: black;
+       }
+
+       .text__block{
+        width: 40%;
+        color: black;
+       }
+       .drive{
+        width: 1px;
+        height: 10px;
+       }
+       .text1{
+        width: 100%;
+        height: 50px;
+       }
+
+.text1 img{
+    height: 40px;
+    width: 40px;
+    float: right;
+}
+.text1 h3{
+    padding: 0;
+    margin: 0;
+    text-align: left;
+    float: left;
+    line-height: 30px;
+    font-family: 'Manrope', sans-serif;
+}
+.blog__block{
+    width: 100%;
+    height: 500px;
+    display: flex;
+    justify-content: space-around;
+}
+.blog__box{
+    width: 20%;
+    height: 400px;
+    display: flex;
+    flex-wrap:wrap;
+}
+hr{
+    width: 500px;
+    background: grey;
+    height: 1px;
+}
+.bababa{
+    width: 100%;
+    height: 150px;
+}
+.dada10{
+    width: 70%;
+    height: 200px;
+    font-size: 48px;
+    font-family: 'Manrope', sans-serif;
+    color: black;
+    padding-left: 480px;
+    text-align: center;
+}
+.blog__img{
+    width: 100%;
+    height: 240px;
+}
+.font{
+    font-size: 16px;
+    font-weight: bold;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+.font1{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+}
+.dada90{
+    font-size: 16px;
+    font-family: 'Manrope', sans-serif;
+    text-align: center;
+    padding-left: 20px;
+}
+.brr{
+    width: 32px;
+    height: 32px;
+}
+.font2{
+    font-size: 16px;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    padding-top: 2px;
+    padding-left: 15px;
+}
+.box3__input3{
+    width: 187px;
+    height: 50px;
+    background: white;
+    border-radius: 30px;
+    border: 2px solid #0a2640;
+    color: #0a2640;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 750px;
+}
+.search__block{
+    width: 80%;
+    height: 400px;
+    background: #0a2640;
+    margin: 0 auto;
+    border-radius: 20px;
+}
+.bomboclad{
+    font-size: 48px;
+    padding-top: 60px;
+    text-align: center;
+    Width:716px;
+    height: 156px;
+    margin: 0 auto;
+}
+.text__email{
+    width: 300px;
+    height: 56px;
+    font-family: 'Open Sans', sans-serif;
+    border-radius: 30px;
+    padding-left: 30px;
+    font-weight: bold;
+    font-size: 20px;
+    border: 1px solid white;
+    margin-top: 100px;
+    margin-left: 400px;
+}
+.button__email{
+    width: 200px;
+    height: 56px;
+    background: #65E4A3;
+    border-radius: 30px;
+    border:#65E4A3;
+    color: black;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: bold;
+    font-size: 20px;
+    margin-left: 20px;
+}
+footer{
+    width: 100%;
+    height: 474px;
+}
+.iop{
+    padding-left: 100px;
+}
